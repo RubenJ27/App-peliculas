@@ -7,7 +7,7 @@ import ApiMovies from "../api/ApiMovies";
 import Loading from "./components/Loading";
 import ResultList from "./components/ResultList";
 
-export const Results = () => {
+export const Results = (movies) => {
   const { title } = useParams();
   const headers = {
     "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
@@ -22,14 +22,22 @@ export const Results = () => {
   
  
    const obtainMovies = async () => {
-    
+    try {
+      const response = await ApiMovies.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} });
+      setGetMovies(response.data);
+      /* console.log(response.data); */
+    } catch (error) {
+      console.log(error);
+    }
    };
 
-   axios.get(`https://online-movie-database.p.rapidapi.com/auto-complete/?q=${title}`, { headers: { "X-RapidAPI-Key": AuthStr, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err))
+   movies = getMovies.d;
 
-   console.log(getMovies)
+   /* axios.get(`https://online-movie-database.p.rapidapi.com/auto-complete/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err)) */
+/* 
+   console.log(getMovies.d) */
  
     /* console.log(!Object.entries(getMovies).length); */
 
@@ -48,8 +56,8 @@ export const Results = () => {
   return (
     <>
       <div className="flex flex-row h-screen overflow-hidden">
-        <div className="w-3/5 flex justify-center items-center flex-col px-10 overflow-y-auto">
-         <ResultList data={getMovies}/>
+        <div className="w-3/5 h-screen justify-center items-center px-10 overflow-y-auto">
+         <ResultList data={movies}/>
         </div>
         <div className="w-2/5">
           <img
