@@ -1,31 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import ApiMovies from "../api/ApiMovies";
 import chairs from "../assets/chairs.png";
 
 
 
 export const Home = () => {
-
-  /* api */
-  const [getMovies, setGetMovies] = useState([]);
-
-  useEffect(() => {
-    obtainMovies();
-  }, []);
-
-  const obtainMovies = async () => {
-    try {
-      const response = await ApiMovies.get("/?t=Iron+Man&apikey=41ff810e");
-      setGetMovies(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  /*  */
+  
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
 
@@ -38,7 +19,7 @@ export const Home = () => {
   };
 
   const handleSearchClick = () => {
-    navigate(`/results/${search.trim()}`);
+    navigate(`/results/${search.replace(/\s/g, '+')}`);
   };
 
   return (
