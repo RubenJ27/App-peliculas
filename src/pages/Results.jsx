@@ -1,6 +1,6 @@
 import React, { useState ,useEffect } from 'react'
 
-import axios from "axios";
+import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import movieTheater from "../assets/movie-theater.png";
 import ApiMovies from "../api/ApiMovies";
@@ -9,29 +9,29 @@ import ResultList from "./components/ResultList";
 
 export const Results = (movies) => {
   const { title } = useParams();
-  const headers = {
-    "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
-    "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY
-  }
+  const navigate = useNavigate();
    /* api */
    const [getMovies, setGetMovies] = useState([]);
-
    useEffect(() => {
     obtainMovies();
   }, []);
+
+  const handleListItemClick = () => {
+
+  }
   
- 
+  
+  movies = getMovies;
+
    const obtainMovies = async () => {
     try {
       const response = await ApiMovies.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} });
-      setGetMovies(response.data);
-      /* console.log(response.data); */
+      setGetMovies(response.data.d);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
    };
-
-   movies = getMovies.d;
 
    /* axios.get(`https://online-movie-database.p.rapidapi.com/auto-complete/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} })
       .then((res) => console.log(res.data))
