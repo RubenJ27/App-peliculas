@@ -15,7 +15,7 @@ export const AppRouter = createBrowserRouter([
     errorElement: <NotFount />
   },
   {
-    path: "/details",
+    path: "/details/:movieId",
     element: <Details />,
     errorElement: <NotFount />
   },

@@ -16,8 +16,8 @@ export const Results = (movies) => {
     obtainMovies();
   }, []);
 
-  const handleListItemClick = () => {
-
+  const handleListItemClick = (movieId) => {
+    navigate(`/details/${movieId}`);
   }
   
   
@@ -27,7 +27,7 @@ export const Results = (movies) => {
     try {
       const response = await ApiMovies.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} });
       setGetMovies(response.data.d);
-      console.log(response.data);
+      /* console.log(response.data); */
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ export const Results = (movies) => {
     <>
       <div className="flex flex-row h-screen overflow-hidden">
         <div className="w-3/5 h-screen justify-center items-center px-10 overflow-y-auto">
-         <ResultList data={movies}/>
+         <ResultList data={movies} onListItemClick={handleListItemClick} />
         </div>
         <div className="w-2/5">
           <img

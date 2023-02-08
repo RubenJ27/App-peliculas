@@ -3,23 +3,20 @@ import { useNavigate } from "react-router";
 
 import chairs from "../assets/chairs.png";
 
-
-
 export const Home = () => {
-  
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const handleInputChange = ({ target: { value } }) => {
     setSearch(value);
   };
 
   const handleCleanClick = () => {
-    setSearch('');
+    setSearch("");
   };
 
   const handleSearchClick = () => {
-    navigate(`/results/${search.replace(/\s/g, '+')}`);
+    navigate(`/results/${search.replace(/\s/g, "+")}`);
   };
 
   return (
@@ -40,16 +37,17 @@ export const Home = () => {
             className="bg-special-gray font-lato w-full my-3 h-9 p-1 border focus:outline-none focus:ring-2 focus:ring-gray-500 rounded"
           />
           <div className="flex w-full justify-between">
-            <button 
-            className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-            style={{ width: "48%" }}
-            onClick={handleSearchClick}
+            <button
+              className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
+              style={{ width: "48%" }}
+              onClick={handleSearchClick}
             >
               Buscar
             </button>
-            <button className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-            style={{ width: "48%" }}
-            onClick={handleCleanClick}
+            <button
+              className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
+              style={{ width: "48%" }}
+              onClick={handleCleanClick}
             >
               Limpiar
             </button>

@@ -2,9 +2,8 @@ import React from 'react'
 import ResultListItems from "./ResultListItems";
 
 
-const ResultList = ({ data }) => {
-   /* console.log(data) */
-  return data?.map(movie => <ResultListItems key={movie.id} imageURL={movie.i.imageUrl} title={movie.l} /> )
+const ResultList = ({ data, onListItemClick }) => {
+  return data?.map(movie => <ResultListItems key={movie.id} imageURL={movie.i.imageUrl} title={movie.l} id={movie.id} onListItemClick={onListItemClick} /> )
 };
 
 export default ResultList
