@@ -3,7 +3,7 @@ import React, { useState ,useEffect } from 'react'
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import movieTheater from "../assets/movie-theater.png";
-import ApiMovies from "../api/ApiMovies";
+import {BASE_URL} from "../api/ApiMovies";
 import Loading from "./components/Loading";
 import ResultList from "./components/ResultList";
 
@@ -25,9 +25,8 @@ export const Results = (movies) => {
 
    const obtainMovies = async () => {
     try {
-      const response = await ApiMovies.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} });
+      const response = await BASE_URL.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com"} });
       setGetMovies(response.data.d);
-      /* console.log(response.data); */
     } catch (error) {
       console.log(error);
     }
