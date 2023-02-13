@@ -1,38 +1,71 @@
-import { startFetchMovieRating, successFetchMovieRating, errorFetchMovieRating } from "../actions/movies";
+import { 
+    startFetchMovieRatings, 
+    successFetchMovieRatings, 
+    errorFetchMovieRatings,
+    startFetchMovieDetails,
+    successFetchMovieDetails,
+    errorFetchMovieDetails
+} from "../actions/movies";
 
 const initialState = {
- isFetching: false,
+ isFetchingMovieRatings: false,
+ isFetchingMovieDetails: false,
  isLoading: true,
- error: null,
- success: null,
- ratings: {}
+ errorFetchingMovieRatings: null,
+ successFetchingMovieRatings: null,
+ errorFetchingMovieDetails: null,
+ successFetchingMovieDetails: null,
+ ratingsDetails: {},
+ movieDetails: {}
 };
 
 const MoviesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case startFetchMovieRating.toString():
+        case startFetchMovieRatings.toString():
         return {
             ...state,
             isLoading: false,
-            isFetching: true
+            isFetchingMovieRatings: true
         };
-        case successFetchMovieRating.toString():
+        case successFetchMovieRatings.toString():
             return {
                 ...state,
                 isLoading: false,
-                isFetching: false,
-                ratings: action.payload.data,
-                success: true,
+                isFetchingMovieRatings: false,
+                ratingsDetails: action.payload,
+                successFetchingMovieRatings: true,
+                errorFetchingMovieRatings: null
+            };
+        case errorFetchMovieRatings.toString():
+            return {
+                ...state,
+                isLoading: false,
+                isFetchingMovieRatings: false,
+                successFetchingMovieRatings: false,
+                errorFetchingMovieRatings: action.payload.error,
+                ratingsDetails: {},
+            };
+        case startFetchMovieDetails.toString():
+            return {
+                ...state,
+                isFetchingMovieDetails: true,
+            };
+        case successFetchMovieDetails.toString():
+            return {
+                ...state,
+                movieDetails: action.payload,
+                isFetchingMovieDetails: false,
+                successFetchingMovieDetails: true,
+                errorFetchingMovieDetails: null,
                 
             };
-        case errorFetchMovieRating.toString():
+        case errorFetchMovieDetails.toString():
             return {
                 ...state,
-                isLoading: false,
-                isFetching: false,
-                ratings: {},
-                success: false,
-                error: action.payload.error
+                isFetchingMovieDetails: false,
+                successFetchingMovieDetails: false,
+                errorFetchingMovieDetails: action.payload.error,
+                movieDetails: {}
             };
         default:
             return state;
