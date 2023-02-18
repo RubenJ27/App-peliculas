@@ -1,3 +1,4 @@
+import React from "react";
 import ratingStart from "../../assets/yellow-star.png"
 
 const RatingContainer = ({ rating }) => {

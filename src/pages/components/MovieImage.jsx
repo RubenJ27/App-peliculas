@@ -1,3 +1,5 @@
+import React from "react";
+
 const MovieImage = ({ url }) => {
   return (
     <div className="w-1/3 flex justify-center">

@@ -1,7 +1,9 @@
-/* import Details from "../Details"; */
+import React from "react";
+
 import Cast from "./Cast";
 import Genre from "./Genre";
 import Rating from "./Rating";
+/* import Details from "../Details"; */
 
 
 const RightContainer = ({ title, year, rating, synopsis, genres, cast }) => {
