@@ -25,7 +25,7 @@ export const Results = (movies) => {
 
    const obtainMovies = async () => {
     try {
-      const response = await BASE_URL_AUTOCOMPLETE.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST} });
+      const response = await BASE_URL_AUTOCOMPLETE.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY, "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST} });
       setGetMovies(response.data.d);
     } catch (error) {
       console.log(error);
