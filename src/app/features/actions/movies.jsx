@@ -14,8 +14,8 @@ export const fetchMovieRatings = (movieId) => async (dispatch) => {
       `title/get-ratings?tconst=${movieId}`,
       {
         headers: {
-          "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST,
+          "X-RapidAPI-Key": import.meta.PROD.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.PROD.VITE_APP_API_HOST
         },
       }
     );
@@ -39,8 +39,8 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
       `/title/get-overview-details?tconst=${movieId}`,
       {
         headers: {
-          "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST,
+          "X-RapidAPI-Key": import.meta.PROD.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.PROD.VITE_APP_API_HOST
         },
       }
     );
@@ -50,8 +50,8 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
       `/title/get-top-cast?tconst=${movieId}`,
       {
         headers: {
-          "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST,
+          "X-RapidAPI-Key": import.meta.PROD.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.PROD.VITE_APP_API_HOST
         },
       }
     );
@@ -61,8 +61,8 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
       `/title/get-details?tconst=${movieId}`,
       {
         headers: {
-          "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST,
+          "X-RapidAPI-Key": import.meta.PROD.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.PROD.VITE_APP_API_HOST
         },
       }
     );
@@ -72,8 +72,8 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
       `/title/get-full-credits?tconst=${movieId}`,
       {
         headers: {
-          "X-RapidAPI-Key": import.meta.env.PROD.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.PROD.VITE_APP_API_HOST,
+          "X-RapidAPI-Key": import.meta.PROD.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.PROD.VITE_APP_API_HOST
         },
       }
     );
