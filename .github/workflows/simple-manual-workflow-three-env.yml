@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Decrypt large secret
-        run: ./decrypt_secret.sh
+        run: ./.env
         env:
           API_KEYS_PAGE_MOVIES: ${{ secrets.API_KEYS_PAGE_MOVIES }}
       # This command is just an example to show your secret being printed
