@@ -1,0 +1,2 @@
+netlify env:get APP_API_KEY
+netlify env:get API_HOST
