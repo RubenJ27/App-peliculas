@@ -25,7 +25,7 @@ export const Results = (movies) => {
 
    const obtainMovies = async () => {
     try {
-      const response = await BASE_URL_AUTOCOMPLETE.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.APP_API_KEY, "X-RapidAPI-Host": import.meta.env.API_HOST} });
+      const response = await BASE_URL_AUTOCOMPLETE.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key":  APP_API_KEY.env, "X-RapidAPI-Host": API_HOST.env} });
       setGetMovies(response.data.d);
     } catch (error) {
       console.log(error);
