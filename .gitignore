@@ -10,7 +10,7 @@ lerna-debug.log*
 node_modules
 secrets.json
 dist
-.env
+.env.production
 dist-ssr
 *.local
 
