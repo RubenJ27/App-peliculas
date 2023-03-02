@@ -21,7 +21,7 @@ export const Details = () => {
     errorFetchingMovieDetails,
     ratingsDetails,
     movieDetails,
-  } = useSelector((state) => state.moviesReducer);
+  } = useSelector((state) => state.moviesSlice);
   useEffect(() => {
     dispatch(fetchMovieRatings(movieId));
   }, [dispatch, movieId]);
