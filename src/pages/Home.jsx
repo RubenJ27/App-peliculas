@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 
+import { useNavigate } from "react-router";
 import chairs from "../assets/chairs.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setTitleSearch } from "../app/features/slices/moviesSlice";
 
 export const Home = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = ({ target: { value } }) => {
     setSearch(value);
@@ -17,6 +20,7 @@ export const Home = () => {
 
   const handleSearchClick = () => {
     navigate(`/results/${search.replace(/\s/g, "+")}`);
+    dispatch(setTitleSearch(search))
   };
 
   return (
