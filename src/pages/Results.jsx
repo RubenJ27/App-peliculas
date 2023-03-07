@@ -2,20 +2,20 @@ import React, { useState ,useEffect } from 'react'
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router";
+/* import { useParams } from "react-router"; */
 import movieTheater from "../assets/movie-theater.png";
-import {BASE_URL_AUTOCOMPLETE} from "../api/ApiMovies";
+/* import {BASE_URL_AUTOCOMPLETE} from "../api/ApiMovies"; */
 import Loading from "../components/Loading";
 import ResultList from "./components/ResultList";
-import { getObtainMovies, setTitleSearch, isLoadingGetObtainMovies, getMoviesList } from "../app/features/slices/moviesSlice";
+import { getObtainMovies } from "../app/features/slices/moviesSlice";
 
 export const Results = (movies) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
    /* api */
    /* const [getMovies, setGetMovies] = useState([]); */
-   const moviesState = useSelector((state) => {
-    return state.moviesSlice;
+   const moviesTitleSearch = useSelector((state) => {
+    return state.moviesSlice.getTitleMovieSearch;
    });
 
    const loadingMovie = useSelector((state) => {
@@ -26,11 +26,9 @@ export const Results = (movies) => {
     return state.moviesSlice.getMoviesList;
    });
 
-
-   const movieTitle = moviesState.getTitleMovieSearch;
    useEffect(() => {
  /*    obtainMovies(); */
- dispatch(getObtainMovies(movieTitle));
+ dispatch(getObtainMovies(moviesTitleSearch));
   }, []);
   const handleListItemClick = (movieId) => {
     navigate(`/details/${movieId}`);
