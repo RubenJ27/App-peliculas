@@ -120,8 +120,7 @@ export const moviesSlice = createSlice({
 
 const { actions, reducer } = moviesSlice;
 
-const {
-  isLoadingGetObtainMovies,
+export const {
   startFetchMovieRatings,
   successFetchMovieRatings,
   errorFetchMovieRatings,
@@ -129,19 +128,9 @@ const {
   successFetchMovieDetails,
   errorFetchMovieDetails,
   setTitleSearch,
-  getMoviesList
 } = actions;
 
-export {
-  isLoadingGetObtainMovies,
-  startFetchMovieRatings,
-  successFetchMovieRatings,
-  errorFetchMovieRatings,
-  startFetchMovieDetails,
-  successFetchMovieDetails,
-  errorFetchMovieDetails,
-  setTitleSearch,
-  getMoviesList
-};
+
+export const isLoadingGetObtainMovies = (state) => state.moviesSlice.isLoadingGetObtainMovies;
 
 export default reducer;
