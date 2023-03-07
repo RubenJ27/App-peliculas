@@ -12,28 +12,23 @@ import { getObtainMovies } from "../app/features/slices/moviesSlice";
 export const Results = (movies) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {
+    getTitleMovieSearch,
+    isLoadingGetObtainMovies,
+    getMoviesList,
+  } = useSelector((state) => state.moviesSlice);
    /* api */
    /* const [getMovies, setGetMovies] = useState([]); */
-   const moviesTitleSearch = useSelector((state) => {
-    return state.moviesSlice.getTitleMovieSearch;
-   });
-
-   const loadingMovie = useSelector((state) => {
-    return state.moviesSlice.isLoadingGetObtainMovies;
-   });
-
-   const getMoviesList = useSelector((state) => {
-    return state.moviesSlice.getMoviesList;
-   });
+   
 
    useEffect(() => {
  /*    obtainMovies(); */
- dispatch(getObtainMovies(moviesTitleSearch));
+ dispatch(getObtainMovies(getTitleMovieSearch));
   }, []);
   const handleListItemClick = (movieId) => {
     navigate(`/details/${movieId}`);
   }
-
+  
   movies = getMoviesList;
    /* const obtainMovies = async () => {
     try {
@@ -56,7 +51,7 @@ export const Results = (movies) => {
         Hubo error por favor recargue la pagina
       </div>
   } */
-  if (loadingMovie) {
+  if (isLoadingGetObtainMovies) {
     return(
     <div className="flex justify-center items-center mt-72">
       <Loading messageLoading="Buscando peliculas..." />
