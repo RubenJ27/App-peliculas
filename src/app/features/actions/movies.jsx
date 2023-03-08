@@ -1,22 +1,22 @@
-import { createAction } from "@reduxjs/toolkit";
+/* import { createAction } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../../api/ApiMovies";
-
+ */
 //Importar actiones de slices solo para cuestiones demostrativas
 
-import { 
+/* import { 
   startFetchMovieRatings as startFetchMovieRatingsSlice ,
   successFetchMovieRatings as successFetchMovieRatingsSlice,
   errorFetchMovieRatings as errorFetchMovieRatingsSlice,
   startFetchMovieDetails as startFetchMovieDetailsSlice,
   successFetchMovieDetails as successFetchMovieDetailsSlice,
   errorFetchMovieDetails as errorFetchMovieDetailsSlice
-} from "../slices/moviesSlice";
+} from "../slices/moviesSlice"; */
 
-export const startFetchMovieRatings = createAction("START_FETCH_MOVIE_RATINGS");
+/* export const startFetchMovieRatings = createAction("START_FETCH_MOVIE_RATINGS");
 export const successFetchMovieRatings = createAction("SUCCESS_FETCH_MOVIE_RATINGS");
 export const errorFetchMovieRatings = createAction("ERROR_FETCH_MOVIE_RATINGS");
-
-export const fetchMovieRatings = (movieId) => async (dispatch) => {
+ */
+/* export const fetchMovieRatings = (movieId) => async (dispatch) => {
   try {
     //dispatch(startFetchMovieRatings());
     dispatch(startFetchMovieRatingsSlice());
@@ -36,15 +36,18 @@ export const fetchMovieRatings = (movieId) => async (dispatch) => {
     //dispatch(errorFetchMovieRatings({ error }));
     dispatch(errorFetchMovieRatingsSlice({ error }));
   }
-};
+}; */
 
-export const startFetchMovieDetails = createAction("START_FETCH_MOVIE_DETAILS");
+
+
+/* fetchMovieDetails */
+/* export const startFetchMovieDetails = createAction("START_FETCH_MOVIE_DETAILS");
 export const successFetchMovieDetails = createAction(
   "SUCCESS_FETCH_MOVIE_DETAILS"
 );
 export const errorFetchMovieDetails = createAction("ERROR_FETCH_MOVIE_DETAILS");
-
-export const fetchMovieDetails = (movieId) => async (dispatch) => {
+ */
+/* export const fetchMovieDetails = (movieId) => async (dispatch) => {
   try {
     //dispatch(startFetchMovieDetails());
     dispatch(startFetchMovieDetailsSlice());
@@ -91,14 +94,14 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
       }
     );
     const fullCreditsData = fullCreditsResponse.data;
-    /* dispatch(
+    dispatch(
       successFetchMovieDetails({
         overview: overviewDetailsData,
         topCats: topCastResponseData,
         details: detailsResponseData,
         fullCredits: fullCreditsData,
       })
-    ); */
+    );
     dispatch(
       successFetchMovieDetailsSlice({
         overview: overviewDetailsData,
@@ -111,4 +114,4 @@ export const fetchMovieDetails = (movieId) => async (dispatch) => {
     //dispatch(errorFetchMovieDetails({ error }));
     dispatch(errorFetchMovieDetailsSlice({ error }));
   }
-};
+}; */

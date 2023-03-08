@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 
 import { 
     startFetchMovieRatings, 
@@ -74,4 +74,4 @@ const MoviesReducer = (state = initialState, action) => {
     }
 };
 
-export default MoviesReducer;
+export default MoviesReducer; */
