@@ -1,5 +1,5 @@
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
-import React from 'react'
+import React from "react";
 
 import { NotFount, Home, Results, Details } from "../pages";
 
@@ -7,16 +7,16 @@ export const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement: <NotFount />
+    errorElement: <NotFount />,
   },
   {
     path: "/results/:title",
     element: <Results />,
-    errorElement: <NotFount />
+    errorElement: <NotFount />,
   },
   {
     path: "/details/:movieId",
     element: <Details />,
-    errorElement: <NotFount />
+    errorElement: <NotFount />,
   },
 ]);

@@ -9,8 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
   fetchMovieRatings,
   fetchMovieDetails,
 } from "../app/features/actions/movies"; */
-import { getOverviewDetails, getFullCredits } from "../app/features/slices/moviesSlice";
-
+import {
+  getOverviewDetails,
+  getFullCredits,
+} from "../app/features/slices/moviesSlice";
 
 export const Details = () => {
   const { movieId } = useParams();
@@ -27,38 +29,38 @@ export const Details = () => {
     errorOverviewDetails,
     fullCredits,
     isLoadingFullCredits,
-    errorFullCredits
+    errorFullCredits,
   } = useSelector((state) => state.moviesSlice);
-  /*   */
   useEffect(() => {
     dispatch(getOverviewDetails(movieId));
     dispatch(getFullCredits(movieId));
     /* dispatch(fetchMovieDetails(movieId)); */
   }, [dispatch, movieId]);
-  
+
   const renderContent = () => {
-    if ( isLoadingOverviewDetails || isLoadingFullCredits) {
-      return <Loading messageLoading="Obteniendo informacion de la pelicula..." />
+    if (isLoadingOverviewDetails || isLoadingFullCredits) {
+      return (
+        <Loading messageLoading="Obteniendo informacion de la pelicula..." />
+      );
     } else if (errorOverviewDetails || errorFullCredits) {
-      return <p>Ha ocurrido un error al obtener la informacion de la pelicula</p>
+      return (
+        <p>Ha ocurrido un error al obtener la informacion de la pelicula</p>
+      );
     }
     return (
       <>
-      <LeftContainer imageUrl={`${overviewDetails.title?.image?.url}`} />
-      <RightContainer
-          title={overviewDetails.title?.title ?? 'Sin titulo'}
-          year={overviewDetails.title?.year ?? 'No disponible'}
+        <LeftContainer imageUrl={`${overviewDetails.title?.image?.url}`} />
+        <RightContainer
+          title={overviewDetails.title?.title ?? "Sin titulo"}
+          year={overviewDetails.title?.year ?? "No disponible"}
           rating={overviewDetails.ratings.rating}
-          synopsis={overviewDetails.plotSummary?.text ?? 'No disponible'}
-          genres={overviewDetails.genres ?? 'No disponible'}
+          synopsis={overviewDetails.plotSummary?.text ?? "No disponible"}
+          genres={overviewDetails.genres ?? "No disponible"}
           cast={movieCast}
         />
       </>
-    )
-  }
-
-  
-
+    );
+  };
 
   const movieCast = fullCredits?.cast?.slice(0, 20) ?? [];
 
