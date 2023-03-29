@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import LeftContainer from "../pages/components/LeftContainer";
-import RightContainer from "../pages/components/RightContainer";
-import Loading from "../components/Loading";
+import LeftContainer from "./components/LeftContainer";
+import RightContainer from "./components/RightContainer";
+import Loading from "./components/Loading";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 /* import {
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getOverviewDetails,
   getFullCredits,
-} from "../app/features/slices/moviesSlice";
+} from "../app/store/slices/movies";
 
 export const Details = () => {
   const { movieId } = useParams();

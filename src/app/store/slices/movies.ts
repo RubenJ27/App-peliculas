@@ -1,49 +1,38 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { string } from "yup";
 import { BASE_URL } from "../../../api/ApiMovies";
-import { BASE_URL_AUTOCOMPLETE } from "../../../api/ApiMovies";
+import {
+  MoviesListData,
+  MoviesState /* este es el nombre del reducer */,
+  OverviewDetailsData,
+} from "../../../models/movies";
+import { StateStorage } from "../../../models/StateStorage";
+import { getOnlineMovieDataBaseAutoComplete } from "../actions/online-movie-database/online-movie-database.actions";
 
-const initialState = {
+const initialState: MoviesState = {
   /*  isFetchingMovieRatings: false,
   isFetchingMovieDetails: false, */
   /* isLoading: true, */
   /* errorFetchingMovieRatings: null,
   successFetchingMovieRatings: null,
   errorFetchingMovieDetails: null,
-  successFetchingMovieDetails: null, 
+  successFetchingMovieDetails: null,
   ratingsDetails: {},
   movieDetails: {},
   */
   /* getTitleMovieSearch: "", */
-  isLoadingGetObtainMovies: true,
+  moviesList: [],
+  isLoadingGetOnlineMovieDataBaseAutoComplete: false,
   overviewDetails: {},
   isLoadingOverviewDetails: true,
   errorOverviewDetails: null,
   fullCredits: {},
   isLoadingFullCredits: true,
   errorFullCredits: null,
+  movieId: "",
 };
 
 // First, create the thunk
-
-export const getObtainMovies = createAsyncThunk(
-  "movies-slice/getObtainMovies",
-  async (moviesState) => {
-    try {
-      const getMoviesResponse = await BASE_URL_AUTOCOMPLETE.get(
-        `/?q=${moviesState}`,
-        {
-          headers: {
-            "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
-            "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST,
-          },
-        }
-      );
-      return getMoviesResponse.data.d;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
 
 export const getOverviewDetails = createAsyncThunk(
   "movies-slice/getOverviewDetails",
@@ -102,7 +91,7 @@ export const getFullCredits = createAsyncThunk(
 ); */
 
 export const moviesSlice = createSlice({
-  name: "movies-slice",
+  name: "moviesState" /* este es el nombre del reducer */,
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -145,18 +134,38 @@ export const moviesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getObtainMovies.pending, (state, action) => {
-        state.isLoadingGetObtainMovies = true;
+      .addCase(getOnlineMovieDataBaseAutoComplete.pending, (state) => {
+        state.isLoadingGetOnlineMovieDataBaseAutoComplete = true;
       })
-      .addCase(getObtainMovies.fulfilled, (state, action) => {
-        state.getMoviesList = action.payload;
-        state.isLoadingGetObtainMovies = false;
-      })
-      .addCase(getObtainMovies.rejected, (state, action) => {
-        state.isLoadingGetObtainMovies = false;
-        state.getMoviesList = {};
-      })
-      .addCase(getOverviewDetails.pending, (state, action) => {
+      .addCase(
+        getOnlineMovieDataBaseAutoComplete.fulfilled,
+        (state, action: PayloadAction<MoviesListData[]>) => {
+          state.isLoadingGetOnlineMovieDataBaseAutoComplete = false;
+          /* state.moviesList = action.payload; */
+          state.moviesList = action.payload; /* 
+            Payload o carga util
+            La propiedad opcional payload PUEDE ser cualquier tipo de valor. Representa la carga útil de la acción. Cualquier información sobre la acción que no sea el tipo o estado de la acción debe ser parte del payload campo. Por convención, si errores true, payload DEBERÍA ser un objeto de error. Esto es similar a rechazar una promesa con un objeto de error. 
+
+            Definicion de PayloadAction<type>
+            PayloadAction se usa para tipar fuertemente
+            Los reductores toman el estado de los argumentos (que es el estado actual de la tienda para que podamos manipularlo) y una acción de tipo PayloadAction<type> (tendría carga útil de la llamada a la acción).
+
+            payload es el nombre de los datos que estás enviando a tu tienda para actualizar el reductor correspondiente.
+            Todas las acciones generadas deben definirse utilizando el PayloadAction<T>tipo de Redux Toolkit, que toma el tipo del action.payloadcampo como su argumento genérico.
+
+            Definicion de carga util 
+            En informática y telecomunicaciones la carga útil (payload en inglés) es el conjunto de datos transmitidos que es en realidad el mensaje enviado. La carga útil excluye las cabeceras o metadatos, que son enviados simplemente para facilitar la entrega del mensaje. El término está tomado prestado del transporte de mercancías, donde carga útil se refiere a la parte de la carga que se utiliza para costear el transporte.
+            En Programación: el uso más común del término está en el contexto de los protocolos de mensaje, para diferenciar la sobrecarga del protocolo de los datos reales. Por ejemplo, una respuesta del servicio web JSON podría ser:
+            "datos" : { "mensaje" : "¡Hola, mundo!" } 
+            La cadena "¡Hola, mundo!" es la carga útil, mientras que el resto es una sobrecarga de protocolo.
+            */
+        }
+      )
+      .addCase(getOnlineMovieDataBaseAutoComplete.rejected, (state) => {
+        state.isLoadingGetOnlineMovieDataBaseAutoComplete = false;
+        /* state.moviesList = {}; */
+      });
+    /* .addCase(getOverviewDetails.pending, (state, action) => {
         state.isLoadingOverviewDetails = true;
       })
       .addCase(getOverviewDetails.fulfilled, (state, action) => {
@@ -179,13 +188,11 @@ export const moviesSlice = createSlice({
       .addCase(getFullCredits.rejected, (state, action) => {
         state.isLoadingFullCredits = false;
         state.errorFullCredits = action.payload.error;
-      });
+      }); */
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
   // including actions generated by createAsyncThunk or in other slices.
 });
-
-const { actions, reducer } = moviesSlice;
 
 export const {
   /* startFetchMovieRatings,
@@ -195,6 +202,11 @@ export const {
   successFetchMovieDetails,
   errorFetchMovieDetails, */
   /* setTitleSearch, */
-} = actions;
+} = moviesSlice.actions;
 
-export default reducer;
+/* export const moviesList = (state: StateStorage) => state.movieState.moviesList; */
+export const isLoadingGetOnlineMovieDataBaseAutoComplete = (
+  state: StateStorage
+) => state.moviesState.isLoadingGetOnlineMovieDataBaseAutoComplete;
+
+export default moviesSlice.reducer;

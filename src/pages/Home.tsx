@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router";
+import { InitialValues } from "../models/moviesSearchState";
 import chairs from "../assets/chairs.png";
 import { useDispatch, useSelector } from "react-redux";
 /* import { setTitleSearch } from "../app/features/slices/moviesSlice"; */
@@ -9,7 +10,9 @@ export const Home = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
-
+  let initialValues: InitialValues = {
+    param: "",
+  };
   const handleInputChange = ({ target: { value } }) => {
     setSearch(value);
   };
