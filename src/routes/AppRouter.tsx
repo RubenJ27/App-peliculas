@@ -1,8 +1,7 @@
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
 
-import { Details } from "../pages/Details";
-import { Results } from "../pages/Results";
+import { Details } from "../pages/Details/Details";
+import { Results } from "../pages/Results/Results";
 import { Home } from "../pages/Home";
 import { NotFount } from "../pages/NotFount";
 
@@ -14,7 +13,7 @@ export const AppRouter = createBrowserRouter([
   },
   {
     path: "/results/:title",
-    element: <Results isLoadingGetOnlineMovieDataBaseAutoComplete={false} overviewDetails={[]} isLoadingOverviewDetails={false} errorOverviewDetails={null} isLoadingFullCredits={false} errorFullCredits={null} movieId={""} />,
+    element: <Results />,
     errorElement: <NotFount />,
   },
   {

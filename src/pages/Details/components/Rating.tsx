@@ -1,7 +1,9 @@
-import React from "react";
-import ratingStart from "../../assets/yellow-star.png"
+import ratingStart from "../../../assets/yellow-star.png"
 
-const RatingContainer = ({ rating }) => {
+import type { Rating } from "../../../entities/moviesInterface";
+
+
+const RatingContainer = ({ rating }: Rating) => {
   return (
     <div className="flex flex-row my-1 items-center">
       <span className="text-xl font-bold w-full">{rating}</span>

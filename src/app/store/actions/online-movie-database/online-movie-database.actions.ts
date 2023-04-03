@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL, BASE_URL_AUTOCOMPLETE } from "../../../../api/ApiMovies";
+import { ResponseMovies } from "../../../../entities/moviesInterface";
 
 export const getOnlineMovieDataBaseAutoComplete = createAsyncThunk(
   "[Online Movie Data Base] Get Online Movie Data Base",
@@ -18,7 +19,7 @@ export const getOnlineMovieDataBaseAutoComplete = createAsyncThunk(
 export const getOverviewDetails = createAsyncThunk(
   "[Online Movie Data Base] Get Online Overview Details Movie Data Base",
   async (params?: string) => {
-    const overviewDetailsResponse = await BASE_URL.get(
+    const { data } = await BASE_URL.get<ResponseMovies>(
       `/title/get-overview-details?tconst=${params}`,
       {
         headers: {
@@ -27,7 +28,18 @@ export const getOverviewDetails = createAsyncThunk(
         },
       }
     );
+    return data;
 
-    return overviewDetailsResponse.data;
+    /* const overviewDetailsResponse = await BASE_URL.get(
+      `/title/get-overview-details?tconst=${params}`,
+      {
+        headers: {
+          "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
+          "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST,
+        },
+      }
+    );
+ */
+    /* return overviewDetailsResponse.data; */
   }
 );

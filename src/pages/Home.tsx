@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useNavigate } from "react-router";
 import { InitialValues } from "../models/moviesSearchState";
 import chairs from "../assets/chairs.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 /* import { setTitleSearch } from "../app/features/slices/moviesSlice"; */
-
+import type { ChangeEvent } from "react";
 export const Home = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -13,8 +13,8 @@ export const Home = () => {
   let initialValues: InitialValues = {
     param: "",
   };
-  const handleInputChange = ({ target: { value } }) => {
-    setSearch(value);
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setSearch(target.value);
   };
 
   const handleCleanClick = () => {
@@ -25,7 +25,6 @@ export const Home = () => {
     navigate(`/results/${search.replace(/\s/g, "+")}`);
     /* dispatch(setTitleSearch(search)); */
   };
-  console.log(search)
 
   return (
     <>

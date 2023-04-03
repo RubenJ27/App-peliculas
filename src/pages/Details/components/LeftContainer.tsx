@@ -1,7 +1,11 @@
 import MovieImage from "./MovieImage";
-import { OverviewDetailsData, OverviewDetailsTitleData } from "../../models/movies";
+import type { Title } from "../../../entities/moviesInterface";
 
-const LeftContainer = ({ title }: { title: OverviewDetailsTitleData }) => {
+interface Props {
+    title?: Title;
+}
+
+const LeftContainer = ({ title }: Props) => {
     return (
         <>
             <MovieImage image={title?.image ?? {}} />

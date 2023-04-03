@@ -1,7 +1,6 @@
-import React from "react";
-import Rating from "./Rating";
+import { OverviewDetailsProps } from "../../models/movies";
 
-const Genre = ({ genres }) => {
+const Genre = ({ genres }: OverviewDetailsProps) => {
   return (
     <div className="flex flex-row my-1">
       <span className="font-bold mr-1">Genero:</span>

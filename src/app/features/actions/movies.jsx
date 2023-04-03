@@ -38,8 +38,6 @@ export const errorFetchMovieRatings = createAction("ERROR_FETCH_MOVIE_RATINGS");
   }
 }; */
 
-
-
 /* fetchMovieDetails */
 /* export const startFetchMovieDetails = createAction("START_FETCH_MOVIE_DETAILS");
 export const successFetchMovieDetails = createAction(
@@ -60,7 +58,7 @@ export const errorFetchMovieDetails = createAction("ERROR_FETCH_MOVIE_DETAILS");
         },
       }
     );
-    const overviewDetailsData = overviewDetailsResponse.data;
+    const OverviewDetailsProps = overviewDetailsResponse.data;
 
     const topCastResponse = await BASE_URL.get(
       `/title/get-top-cast?tconst=${movieId}`,
@@ -96,7 +94,7 @@ export const errorFetchMovieDetails = createAction("ERROR_FETCH_MOVIE_DETAILS");
     const fullCreditsData = fullCreditsResponse.data;
     dispatch(
       successFetchMovieDetails({
-        overview: overviewDetailsData,
+        overview: OverviewDetailsProps,
         topCats: topCastResponseData,
         details: detailsResponseData,
         fullCredits: fullCreditsData,
@@ -104,7 +102,7 @@ export const errorFetchMovieDetails = createAction("ERROR_FETCH_MOVIE_DETAILS");
     );
     dispatch(
       successFetchMovieDetailsSlice({
-        overview: overviewDetailsData,
+        overview: OverviewDetailsProps,
         topCats: topCastResponseData,
         details: detailsResponseData,
         fullCredits: fullCreditsData,

@@ -1,4 +1,4 @@
-import { PropsMessageLoading } from "../../models/movies";
+import { PropsMessageLoading } from "../models/movies";
 
 const Loading = ({ messageLoading }: PropsMessageLoading) => {
     return (

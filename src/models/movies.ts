@@ -1,3 +1,5 @@
+import { ResponseMovies } from "../entities/moviesInterface";
+
 export interface PlanListData {
   items: any[];
   next_page?: number;
@@ -35,25 +37,14 @@ export interface MoviesListData {
 export interface MoviesList {
   movie?: MoviesListData[];
 }
-
-export interface OverviewDetailsImageData {
-  height?: number;
-  id?: string;
-  url?: string;
-  width?: number;
-}
-
-export interface OverviewDetailsTitleData {
-  image?: OverviewDetailsImageData;
-}
-
-export interface OverviewDetailsData {
+/* 
+export interface OverviewDetailsProps {
   id?: string;
   title?: OverviewDetailsTitleData;
-  ratings?: object;
-  genres?: [];
-  protSummary?: object;
-}
+  ratings?: RatingData;
+  protSummary?: PlotSummaryData;
+  genres?: string[];
+} */
 export interface FullCredits {}
 export interface PropsMessageLoading {
   messageLoading: string;
@@ -63,7 +54,7 @@ export interface MoviesState {
   movies?: MoviesListData[];
   data?: MoviesList[];
   isLoadingGetOnlineMovieDataBaseAutoComplete: boolean;
-  overviewDetails: OverviewDetailsData;
+  overviewDetails: ResponseMovies;
   isLoadingOverviewDetails: boolean;
   errorOverviewDetails: null;
   /* fullCredits: FullCredits; */

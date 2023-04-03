@@ -1,4 +1,4 @@
-import { ResultListData } from "../../models/movies";
+import { ResultListData } from "../../../models/movies";
 import ResultListItems from "./ResultListItems";
 
 const ResultList = ({ data, onListItemClick }: ResultListData) => {

@@ -4,26 +4,15 @@ import { BASE_URL } from "../../../api/ApiMovies";
 import {
   MoviesListData,
   MoviesState /* este es el nombre del reducer */,
-  OverviewDetailsData,
 } from "../../../models/movies";
 import { StateStorage } from "../../../models/StateStorage";
 import {
   getOnlineMovieDataBaseAutoComplete,
   getOverviewDetails,
 } from "../actions/online-movie-database/online-movie-database.actions";
+import { ResponseMovies } from "../../../entities/moviesInterface";
 
 const initialState: MoviesState = {
-  /*  isFetchingMovieRatings: false,
-  isFetchingMovieDetails: false, */
-  /* isLoading: true, */
-  /* errorFetchingMovieRatings: null,
-  successFetchingMovieRatings: null,
-  errorFetchingMovieDetails: null,
-  successFetchingMovieDetails: null,
-  ratingsDetails: {},
-  movieDetails: {},
-  */
-  /* getTitleMovieSearch: "", */
   moviesList: [],
   isLoadingGetOnlineMovieDataBaseAutoComplete: false,
   overviewDetails: {},
@@ -152,7 +141,7 @@ export const moviesSlice = createSlice({
       })
       .addCase(
         getOverviewDetails.fulfilled,
-        (state, action: PayloadAction<OverviewDetailsData>) => {
+        (state, action: PayloadAction<ResponseMovies>) => {
           state.overviewDetails = action.payload;
           state.isLoadingOverviewDetails = false;
           state.errorOverviewDetails = null;
@@ -160,7 +149,6 @@ export const moviesSlice = createSlice({
       )
       .addCase(getOverviewDetails.rejected, (state, action) => {
         state.isLoadingOverviewDetails = false;
-        /*         state.errorOverviewDetails = action.payload.error; */
       });
     /* .addCase(getFullCredits.pending, (state, action) => {
         state.isLoadingFullCredits = true;

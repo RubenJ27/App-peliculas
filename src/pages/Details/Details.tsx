@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-import LeftContainer from "./components/LeftContainer";
-/* import RightContainer from "./components/RightContainer"; */
-import { getOverviewDetails } from "../app/store/actions/online-movie-database/online-movie-database.actions";
-import Loading from "./components/Loading";
+import LeftContainer from "../Details/components/LeftContainer";
+import RightContainer from "../Details/components/RightContainer";
+import { getOverviewDetails } from "../../app/store/actions/online-movie-database/online-movie-database.actions";
+import Loading from "../../components/Loading";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 /* import {
@@ -12,9 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 } from "../app/features/actions/movies"; */
 import {
   getFullCredits,
-} from "../app/store/slices/moviesSlice";
-import { StateStorage } from "../models/StateStorage";
-import { AppDispatch } from "../app/store/store";
+} from "../../app/store/slices/moviesSlice";
+import { StateStorage } from "../../models/StateStorage";
+import { AppDispatch } from "../../app/store/store";
 
 export const Details = () => {
   const { movieId } = useParams();
@@ -38,7 +38,6 @@ export const Details = () => {
     /*     dispatch(getFullCredits(movieId)); */
     /* dispatch(fetchMovieDetails(movieId)); */
   }, [movieId]);
-  console.log(overviewDetails)
   const renderContent = () => {
     if (isLoadingOverviewDetails /* || isLoadingFullCredits */) {
       return (
@@ -54,6 +53,13 @@ export const Details = () => {
         {/* <LeftContainer url={`${overviewDetails.title?.image?.url}`} /> */}
         {/* {<LeftContainer url={overviewDetails?.title?.image?.url ?? "/nodisponible.png"} />} */}
         <LeftContainer title={overviewDetails?.title ?? {}} />
+        <RightContainer
+          title={overviewDetails.title}
+          ratings={overviewDetails.ratings}
+          protSummary={overviewDetails.protSummary}
+          genres={overviewDetails.genres}
+        /* cast={movieCast} */
+        />
         {/* <RightContainer
           title={overviewDetails.title?.title ?? "Sin titulo"}
           year={overviewDetails.title?.year ?? "No disponible"}
