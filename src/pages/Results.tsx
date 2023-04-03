@@ -8,14 +8,12 @@ import ResultList from "./components/ResultList.jsx";
 import { getOnlineMovieDataBaseAutoComplete } from "../app/store/actions/online-movie-database/online-movie-database.actions";
 import { StateStorage } from "../models/StateStorage";
 import { AppDispatch } from "../app/store/store";
-import { MoviesList, MoviesListData, MoviesState } from "../models/movies";
+import { MoviesState } from "../models/movies";
 
 export const Results = ({ movies }: MoviesState) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { valueInputSearch } =
-    useParams(); /* El useParams gancho devuelve un objeto de pares clave/valor de los parámetros dinámicos de la URL actual que coincidieron con el <Route path>. Las rutas secundarias heredan todos los parámetros de sus rutas principales*/
-
+  const { title } = useParams(); /* El useParams gancho devuelve un objeto de pares clave/valor de los parámetros dinámicos de la URL actual que coincidieron con el <Route path>. Las rutas secundarias heredan todos los parámetros de sus rutas principales*/
   /* api */
   /* const [getMovies, setGetMovies] = useState([]); */
   /* const [getTitleMovie, setGetTitleMovie] = useState(""); */
@@ -25,10 +23,10 @@ export const Results = ({ movies }: MoviesState) => {
   console.log(state) */
 
   useEffect(() => {
-    dispatch(getOnlineMovieDataBaseAutoComplete(valueInputSearch));
+    dispatch(getOnlineMovieDataBaseAutoComplete(title));
   }, []);
   const handleListItemClick = (movieId: string) => {
-    console.log(movieId);
+    /* console.log(movieId); */
     navigate(`/details/${movieId}`);
   };
   movies = moviesList;
@@ -69,7 +67,7 @@ export const Results = ({ movies }: MoviesState) => {
     <>
       <div className="flex flex-row h-screen overflow-hidden">
         <div className="w-3/5 h-screen justify-center items-center px-10 overflow-y-auto">
-          <ResultList data={!!movies ? movies : []} onListItemClick={handleListItemClick} />
+          <ResultList data={movies ? movies : []} onListItemClick={handleListItemClick} />
         </div>
         <div className="w-2/5">
           <img

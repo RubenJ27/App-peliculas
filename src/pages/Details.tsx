@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 
 import LeftContainer from "./components/LeftContainer";
-import RightContainer from "./components/RightContainer";
+/* import RightContainer from "./components/RightContainer"; */
+import { getOverviewDetails } from "../app/store/actions/online-movie-database/online-movie-database.actions";
 import Loading from "./components/Loading";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +11,14 @@ import { useDispatch, useSelector } from "react-redux";
   fetchMovieDetails,
 } from "../app/features/actions/movies"; */
 import {
-  getOverviewDetails,
   getFullCredits,
-} from "../app/store/slices/movies";
+} from "../app/store/slices/moviesSlice";
+import { StateStorage } from "../models/StateStorage";
+import { AppDispatch } from "../app/store/store";
 
 export const Details = () => {
   const { movieId } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const {
     /* isFetchingMovieRatings,
     isFetchingMovieDetails, */
@@ -27,18 +29,18 @@ export const Details = () => {
     overviewDetails,
     isLoadingOverviewDetails,
     errorOverviewDetails,
-    fullCredits,
+    /* fullCredits, */
     isLoadingFullCredits,
     errorFullCredits,
-  } = useSelector((state) => state.moviesSlice);
+  } = useSelector((state: StateStorage) => state.moviesState);
   useEffect(() => {
     dispatch(getOverviewDetails(movieId));
-    dispatch(getFullCredits(movieId));
+    /*     dispatch(getFullCredits(movieId)); */
     /* dispatch(fetchMovieDetails(movieId)); */
-  }, [dispatch, movieId]);
-
+  }, [movieId]);
+  console.log(overviewDetails)
   const renderContent = () => {
-    if (isLoadingOverviewDetails || isLoadingFullCredits) {
+    if (isLoadingOverviewDetails /* || isLoadingFullCredits */) {
       return (
         <Loading messageLoading="Obteniendo informacion de la pelicula..." />
       );
@@ -49,20 +51,22 @@ export const Details = () => {
     }
     return (
       <>
-        <LeftContainer imageUrl={`${overviewDetails.title?.image?.url}`} />
-        <RightContainer
+        {/* <LeftContainer url={`${overviewDetails.title?.image?.url}`} /> */}
+        {/* {<LeftContainer url={overviewDetails?.title?.image?.url ?? "/nodisponible.png"} />} */}
+        <LeftContainer title={overviewDetails?.title ?? {}} />
+        {/* <RightContainer
           title={overviewDetails.title?.title ?? "Sin titulo"}
           year={overviewDetails.title?.year ?? "No disponible"}
           rating={overviewDetails.ratings.rating}
           synopsis={overviewDetails.plotSummary?.text ?? "No disponible"}
           genres={overviewDetails.genres ?? "No disponible"}
           cast={movieCast}
-        />
+        /> */}
       </>
     );
   };
 
-  const movieCast = fullCredits?.cast?.slice(0, 20) ?? [];
+  /* const movieCast = fullCredits?.cast?.slice(0, 20) ?? []; */
 
   return (
     <>

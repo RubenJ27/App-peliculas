@@ -7,10 +7,7 @@ export interface PlanListData {
   size: number;
   total: number;
 }
-export interface ParamsFilter {
-  pattern?: string;
-}
-export interface ImageUrlData {
+interface ImageUrlData {
   height?: number;
   imageUrl?: string;
   width?: number;
@@ -25,9 +22,6 @@ export interface ResultListItemsData {
   image?: ImageUrlData;
   onListItemClick: (movieId: string) => void;
 }
-export interface MoviesList {
-  movie?: MoviesListData[];
-}
 export interface MoviesListData {
   i?: ImageUrlData;
   id?: string;
@@ -38,7 +32,28 @@ export interface MoviesListData {
   s?: string;
   y?: number;
 }
-export interface OverviewDetailsData {}
+export interface MoviesList {
+  movie?: MoviesListData[];
+}
+
+export interface OverviewDetailsImageData {
+  height?: number;
+  id?: string;
+  url?: string;
+  width?: number;
+}
+
+export interface OverviewDetailsTitleData {
+  image?: OverviewDetailsImageData;
+}
+
+export interface OverviewDetailsData {
+  id?: string;
+  title?: OverviewDetailsTitleData;
+  ratings?: object;
+  genres?: [];
+  protSummary?: object;
+}
 export interface FullCredits {}
 export interface PropsMessageLoading {
   messageLoading: string;
@@ -51,7 +66,7 @@ export interface MoviesState {
   overviewDetails: OverviewDetailsData;
   isLoadingOverviewDetails: boolean;
   errorOverviewDetails: null;
-  fullCredits: FullCredits;
+  /* fullCredits: FullCredits; */
   isLoadingFullCredits: boolean;
   errorFullCredits: null;
   movieId: string;

@@ -25,6 +25,7 @@ export const Home = () => {
     navigate(`/results/${search.replace(/\s/g, "+")}`);
     /* dispatch(setTitleSearch(search)); */
   };
+  console.log(search)
 
   return (
     <>

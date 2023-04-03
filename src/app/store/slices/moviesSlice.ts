@@ -7,7 +7,10 @@ import {
   OverviewDetailsData,
 } from "../../../models/movies";
 import { StateStorage } from "../../../models/StateStorage";
-import { getOnlineMovieDataBaseAutoComplete } from "../actions/online-movie-database/online-movie-database.actions";
+import {
+  getOnlineMovieDataBaseAutoComplete,
+  getOverviewDetails,
+} from "../actions/online-movie-database/online-movie-database.actions";
 
 const initialState: MoviesState = {
   /*  isFetchingMovieRatings: false,
@@ -26,33 +29,13 @@ const initialState: MoviesState = {
   overviewDetails: {},
   isLoadingOverviewDetails: true,
   errorOverviewDetails: null,
-  fullCredits: {},
+  /* fullCredits: {}, */
   isLoadingFullCredits: true,
   errorFullCredits: null,
   movieId: "",
 };
 
 // First, create the thunk
-
-export const getOverviewDetails = createAsyncThunk(
-  "movies-slice/getOverviewDetails",
-  async (movieId) => {
-    try {
-      const overviewDetailsResponse = await BASE_URL.get(
-        `/title/get-overview-details?tconst=${movieId}`,
-        {
-          headers: {
-            "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
-            "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST,
-          },
-        }
-      );
-      return overviewDetailsResponse.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
 
 export const getFullCredits = createAsyncThunk(
   "movies-slice/getFullCredits",
@@ -163,21 +146,23 @@ export const moviesSlice = createSlice({
       )
       .addCase(getOnlineMovieDataBaseAutoComplete.rejected, (state) => {
         state.isLoadingGetOnlineMovieDataBaseAutoComplete = false;
-        /* state.moviesList = {}; */
-      });
-    /* .addCase(getOverviewDetails.pending, (state, action) => {
+      })
+      .addCase(getOverviewDetails.pending, (state, action) => {
         state.isLoadingOverviewDetails = true;
       })
-      .addCase(getOverviewDetails.fulfilled, (state, action) => {
-        state.overviewDetails = action.payload;
-        state.isLoadingOverviewDetails = false;
-        state.errorOverviewDetails = null;
-      })
+      .addCase(
+        getOverviewDetails.fulfilled,
+        (state, action: PayloadAction<OverviewDetailsData>) => {
+          state.overviewDetails = action.payload;
+          state.isLoadingOverviewDetails = false;
+          state.errorOverviewDetails = null;
+        }
+      )
       .addCase(getOverviewDetails.rejected, (state, action) => {
         state.isLoadingOverviewDetails = false;
-        state.errorOverviewDetails = action.payload.error;
-      })
-      .addCase(getFullCredits.pending, (state, action) => {
+        /*         state.errorOverviewDetails = action.payload.error; */
+      });
+    /* .addCase(getFullCredits.pending, (state, action) => {
         state.isLoadingFullCredits = true;
       })
       .addCase(getFullCredits.fulfilled, (state, action) => {
