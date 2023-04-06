@@ -1,16 +1,10 @@
-import MovieImage from "./MovieImage";
-import type { Title } from "../../../models/moviesInterface";
+import MovieImage from './MovieImage';
+import type { Title } from '../../../models/moviesInterface';
 
 interface Props {
-    title?: Title;
+  title?: Title;
 }
 
-const LeftContainer = ({ title }: Props) => {
-    return (
-        <>
-            <MovieImage image={title?.image ?? {}} />
-        </>
-    )
-}
-
-export default LeftContainer;
+export const LeftContainer = ({ title }: Props): JSX.Element => {
+  return <MovieImage image={title?.image ?? {}} />;
+};

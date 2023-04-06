@@ -35,23 +35,13 @@ export interface ResponseMovies {
   year?: string;
   genres?: string[];
 }
-
-export interface PlanListData {
-  items: any[];
-  next_page?: number;
-  page: number;
-  pages: number;
-  previous_page?: number;
-  size: number;
-  total: number;
-}
 interface ImageUrlData {
   height?: number;
   imageUrl?: string;
   width?: number;
 }
 export interface ResultListData {
-  data: MoviesListData[];
+  data?: MoviesListData[];
   onListItemClick: (movieId: string) => void;
 }
 export interface ResultListItemsData {
@@ -79,43 +69,43 @@ export interface Role {
 }
 
 export enum Category {
-  Actor = "actor",
-  Actress = "actress",
-  AnimationDepartment = "animation_department",
-  ArtDepartment = "art_department",
-  ArtDirector = "art_director",
-  AssistantDirector = "assistant_director",
-  CameraDepartment = "camera_department",
-  CastingDepartment = "casting_department",
-  CastingDirector = "casting_director",
-  Cinematographer = "cinematographer",
-  Composer = "composer",
-  CostumeDepartment = "costume_department",
-  CostumeDesigner = "costume_designer",
-  Director = "director",
-  Editor = "editor",
-  EditorialDepartment = "editorial_department",
-  LocationManagement = "location_management",
-  MakeUpDepartment = "make_up_department",
-  Miscellaneous = "miscellaneous",
-  MusicDepartment = "music_department",
-  Producer = "producer",
-  ProductionDesigner = "production_designer",
-  ProductionManager = "production_manager",
-  ScriptDepartment = "script_department",
-  SetDecorator = "set_decorator",
-  SoundDepartment = "sound_department",
-  SpecialEffects = "special_effects",
-  Stunts = "stunts",
-  Thanks = "thanks",
-  TransportationDepartment = "transportation_department",
-  VisualEffects = "visual_effects",
-  Writer = "writer",
+  Actor = 'actor',
+  Actress = 'actress',
+  AnimationDepartment = 'animation_department',
+  ArtDepartment = 'art_department',
+  ArtDirector = 'art_director',
+  AssistantDirector = 'assistant_director',
+  CameraDepartment = 'camera_department',
+  CastingDepartment = 'casting_department',
+  CastingDirector = 'casting_director',
+  Cinematographer = 'cinematographer',
+  Composer = 'composer',
+  CostumeDepartment = 'costume_department',
+  CostumeDesigner = 'costume_designer',
+  Director = 'director',
+  Editor = 'editor',
+  EditorialDepartment = 'editorial_department',
+  LocationManagement = 'location_management',
+  MakeUpDepartment = 'make_up_department',
+  Miscellaneous = 'miscellaneous',
+  MusicDepartment = 'music_department',
+  Producer = 'producer',
+  ProductionDesigner = 'production_designer',
+  ProductionManager = 'production_manager',
+  ScriptDepartment = 'script_department',
+  SetDecorator = 'set_decorator',
+  SoundDepartment = 'sound_department',
+  SpecialEffects = 'special_effects',
+  Stunts = 'stunts',
+  Thanks = 'thanks',
+  TransportationDepartment = 'transportation_department',
+  VisualEffects = 'visual_effects',
+  Writer = 'writer',
 }
 
 export enum Attr {
-  Creator = "creator",
-  Uncredited = "uncredited",
+  Creator = 'creator',
+  Uncredited = 'uncredited',
 }
 
 export interface Cast {
@@ -153,7 +143,7 @@ export interface FullCredits {
   id?: string;
   base?: Base;
   cast?: Cast[];
-  crew?: { [key: string]: Cast[] };
+  /* crew?: { [key: string]: Cast[] }; */
 }
 
 export interface MoviesState {

@@ -1,27 +1,24 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useNavigate } from "react-router";
-import { InitialValues } from "../models/moviesSearchState";
-import chairs from "../assets/chairs.png";
-import { useDispatch } from "react-redux";
-import type { ChangeEvent } from "react";
-export const Home = () => {
+import { useNavigate } from 'react-router';
+import chairs from '../assets/chairs.png';
+import type { ChangeEvent } from 'react';
+
+export const Home = (): JSX.Element => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const dispatch = useDispatch();
-  let initialValues: InitialValues = {
-    param: "",
-  };
-  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+  const [search, setSearch] = useState('');
+  const handleInputChange = ({
+    target,
+  }: ChangeEvent<HTMLInputElement>): void => {
     setSearch(target.value);
   };
 
-  const handleCleanClick = () => {
-    setSearch("");
+  const handleCleanClick = (): void => {
+    setSearch('');
   };
 
-  const handleSearchClick = () => {
-    navigate(`/results/${search.replace(/\s/g, "+")}`);
+  const handleSearchClick = (): void => {
+    navigate(`/results/${search.replace(/\s/g, '+')}`);
   };
 
   return (
@@ -44,14 +41,14 @@ export const Home = () => {
           <div className="flex w-full justify-between">
             <button
               className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-              style={{ width: "48%" }}
+              style={{ width: '48%' }}
               onClick={handleSearchClick}
             >
               Buscar
             </button>
             <button
               className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-              style={{ width: "48%" }}
+              style={{ width: '48%' }}
               onClick={handleCleanClick}
             >
               Limpiar
