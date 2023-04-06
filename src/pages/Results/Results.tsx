@@ -19,6 +19,7 @@ export const Results = (): JSX.Element => {
     useSelector((state: StateStorage) => state.moviesState);
 
   useEffect(() => {
+    // Si esta condicion no se cumple no se produce el efecto
     if (title === undefined) return
     void dispatch(getOnlineMovieDataBaseAutoComplete(title));
   }, [dispatch, title]);
