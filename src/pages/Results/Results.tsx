@@ -14,12 +14,7 @@ export const Results = () => {
   const navigate = useNavigate();
   const { title } = useParams(); /* El useParams gancho devuelve un objeto de pares clave/valor de los parámetros dinámicos de la URL actual que coincidieron con el <Route path>. Las rutas secundarias heredan todos los parámetros de sus rutas principales*/
   /* api */
-  /* const [getMovies, setGetMovies] = useState([]); */
-  /* const [getTitleMovie, setGetTitleMovie] = useState(""); */
-  /* setGetTitleMovie(getTitleMovieSearch) */
   const { moviesList, isLoadingGetOnlineMovieDataBaseAutoComplete } = useSelector((state: StateStorage) => state.moviesState);
-  /* const state = {} = useSelector((state: StateStorage) => state);
-  console.log(state) */
 
   useEffect(() => {
 
@@ -29,31 +24,9 @@ export const Results = () => {
     void dispatch(getOnlineMovieDataBaseAutoComplete(title));
   }, []);
   const handleListItemClick = (movieId: string) => {
-    /* console.log(movieId); */
     navigate(`/details/${movieId}`);
   };
-  /* movies = moviesList; */
-  /* console.log(movies) */
-  /* const obtainMovies = async () => {
-    try {
-      const response = await BASE_URL_AUTOCOMPLETE.get(`/?q=${title}`, { headers: { "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY, "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST} });
-      setGetMovies(response.data.d);
-    } catch (error) {
-      console.log(error);
-    }
-   }; */
 
-  /* if (!Object.entries(getMovies).length) {
-    return(
-    <div className="flex justify-center items-center mt-72">
-      <Loading messageLoading="Buscando peliculas..." />
-    </div>
-    );
-  }else {
-      <div className="flex justify-center items-center mt-72">
-        Hubo error por favor recargue la pagina
-      </div>
-  } */
   if (isLoadingGetOnlineMovieDataBaseAutoComplete) {
     return (
       <div className="flex justify-center items-center mt-72">

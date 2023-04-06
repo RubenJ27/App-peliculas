@@ -1,4 +1,3 @@
-
 export interface InitialValues {
-    param: string;  
+  param: string;
 }

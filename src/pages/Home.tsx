@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import { InitialValues } from "../models/moviesSearchState";
 import chairs from "../assets/chairs.png";
 import { useDispatch } from "react-redux";
-/* import { setTitleSearch } from "../app/features/slices/moviesSlice"; */
 import type { ChangeEvent } from "react";
 export const Home = () => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ export const Home = () => {
 
   const handleSearchClick = () => {
     navigate(`/results/${search.replace(/\s/g, "+")}`);
-    /* dispatch(setTitleSearch(search)); */
   };
 
   return (

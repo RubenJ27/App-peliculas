@@ -1,9 +1,9 @@
 import ratingStart from "../../../assets/yellow-star.png"
 
-import type { Rating } from "../../../entities/moviesInterface";
+import type { RatingInterface } from "../../../models/moviesInterface";
 
 
-const RatingContainer = ({ rating }: Rating) => {
+const RatingContainer = ({ rating }: RatingInterface) => {
   return (
     <div className="flex flex-row my-1 items-center">
       <span className="text-xl font-bold w-full">{rating}</span>

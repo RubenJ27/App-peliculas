@@ -1,11 +1,14 @@
-import React from "react";
-import Rating from "./Rating";
+import { Cast } from "../../../models/moviesInterface";
 
-const Cast = ({ cast }) => {
+interface Props {
+  cast?: Cast[];
+}
+
+const Casts = ({ cast }: Props) => {
   return (
     <div className="flex flex-row my-1 flex-wrap">
       <span className="font-bold mr-1">Cast:</span>
-      {cast.map(({ name }, index) => (
+      {cast?.map(({ name }, index) => (
         <span key={index} className="mr-1">
           {`${name}${index !== cast.length - 1 ? "," : ""}`}
         </span>
@@ -14,4 +17,4 @@ const Cast = ({ cast }) => {
   );
 };
 
-export default Cast;
+export default Casts;

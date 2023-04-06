@@ -1,5 +1,4 @@
-import { Image } from "../../../entities/moviesInterface";
-
+import { Image } from "../../../models/moviesInterface";
 
 const MovieImage = ({ image }: { image: Image }) => {
   return (

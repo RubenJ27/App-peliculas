@@ -1,6 +1,6 @@
-import { OverviewDetailsProps } from "../../models/movies";
+import { ResponseMovies } from "../../../models/moviesInterface";
 
-const Genre = ({ genres }: OverviewDetailsProps) => {
+const Genre = ({ genres }: ResponseMovies) => {
   return (
     <div className="flex flex-row my-1">
       <span className="font-bold mr-1">Genero:</span>

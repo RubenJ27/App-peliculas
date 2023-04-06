@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import { IError } from "../entities/errorInterface";
+import { IError } from "../models/errorInterface";
 
 export const NotFount = () => {
   const error = useRouteError() as IError;

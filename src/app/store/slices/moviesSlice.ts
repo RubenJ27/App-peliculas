@@ -2,15 +2,17 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { string } from "yup";
 import { BASE_URL } from "../../../api/ApiMovies";
 import {
+  FullCredits,
   MoviesListData,
   MoviesState /* este es el nombre del reducer */,
-} from "../../../models/movies";
+} from "../../../models/moviesInterface";
 import { StateStorage } from "../../../models/StateStorage";
 import {
+  getFullCredits,
   getOnlineMovieDataBaseAutoComplete,
   getOverviewDetails,
 } from "../actions/online-movie-database/online-movie-database.actions";
-import { ResponseMovies } from "../../../entities/moviesInterface";
+import { ResponseMovies } from "../../../models/moviesInterface";
 
 const initialState: MoviesState = {
   moviesList: [],
@@ -18,7 +20,7 @@ const initialState: MoviesState = {
   overviewDetails: {},
   isLoadingOverviewDetails: true,
   errorOverviewDetails: null,
-  /* fullCredits: {}, */
+  fullCredits: {},
   isLoadingFullCredits: true,
   errorFullCredits: null,
   movieId: "",
@@ -26,84 +28,11 @@ const initialState: MoviesState = {
 
 // First, create the thunk
 
-export const getFullCredits = createAsyncThunk(
-  "movies-slice/getFullCredits",
-  async (movieId) => {
-    try {
-      const fullCreditsResponse = await BASE_URL.get(
-        `/title/get-full-credits?tconst=${movieId}`,
-        {
-          headers: {
-            "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
-            "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST,
-          },
-        }
-      );
-      return fullCreditsResponse.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
-/* export const fetchMovieRatings = createAsyncThunk(
-  'movies-slice/fetchByIdStatus',
-  async (movieId) => {
-    const ratingsResponse = await BASE_URL.get(
-      `title/get-ratings?tconst=${movieId}`,
-      {
-        headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_APP_API_KEY,
-          "X-RapidAPI-Host": import.meta.env.VITE_APP_API_HOST
-        },
-      }
-    )
-    return ratingsResponse.data;
-  }
-); */
-
 export const moviesSlice = createSlice({
   name: "moviesState" /* este es el nombre del reducer */,
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {
-    /* setTitleSearch: (state, action) => {
-      state.getTitleMovieSearch = action.payload;
-    }, */
-    /* startFetchMovieRatings(state, action) {
-      state.isLoading = false;
-      state.isFetchingMovieRatings = true;
-    }, */
-    /* successFetchMovieRatings(state, action) {
-      state.isLoading = false;
-      state.isFetchingMovieRatings = false;
-      state.ratingsDetails = action.payload;
-      state.successFetchingMovieRatings = true;
-      state.errorFetchingMovieRatings = null;
-    }, */
-    /* errorFetchMovieRatings(state, action) {
-      state.isLoading = false;
-      state.isFetchingMovieRatings = false;
-      state.successFetchingMovieRatings = false;
-      state.errorFetchingMovieRatings = action.payload.error;
-      state.ratingsDetails = {};
-    }, */
-    /* startFetchMovieDetails(state, action) {
-      state.isFetchingMovieDetails = true;
-    }, */
-    /* successFetchMovieDetails(state, action) {
-      state.movieDetails = action.payload;
-      state.isFetchingMovieDetails = false;
-      state.successFetchingMovieDetails = true;
-      state.errorFetchingMovieDetails = null;
-    }, */
-    /* errorFetchMovieDetails(state, action) {
-      state.isFetchingMovieDetails = false;
-      state.successFetchingMovieDetails = false;
-      state.errorFetchingMovieDetails = action.payload.error;
-      state.movieDetails = {};
-    }, */
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getOnlineMovieDataBaseAutoComplete.pending, (state) => {
@@ -149,35 +78,28 @@ export const moviesSlice = createSlice({
       )
       .addCase(getOverviewDetails.rejected, (state, action) => {
         state.isLoadingOverviewDetails = false;
-      });
-    /* .addCase(getFullCredits.pending, (state, action) => {
+      })
+      .addCase(getFullCredits.pending, (state, action) => {
         state.isLoadingFullCredits = true;
       })
-      .addCase(getFullCredits.fulfilled, (state, action) => {
-        state.fullCredits = action.payload;
-        state.isLoadingFullCredits = false;
-        state.errorFullCredits = null;
-      })
+      .addCase(
+        getFullCredits.fulfilled,
+        (state, action: PayloadAction<FullCredits>) => {
+          state.fullCredits = action.payload;
+          state.isLoadingFullCredits = false;
+          state.errorFullCredits = null;
+        }
+      )
       .addCase(getFullCredits.rejected, (state, action) => {
         state.isLoadingFullCredits = false;
-        state.errorFullCredits = action.payload.error;
-      }); */
+      });
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
   // including actions generated by createAsyncThunk or in other slices.
 });
 
-export const {
-  /* startFetchMovieRatings,
-  successFetchMovieRatings,
-  errorFetchMovieRatings,
-  startFetchMovieDetails,
-  successFetchMovieDetails,
-  errorFetchMovieDetails, */
-  /* setTitleSearch, */
-} = moviesSlice.actions;
+export const {} = moviesSlice.actions;
 
-/* export const moviesList = (state: StateStorage) => state.movieState.moviesList; */
 export const isLoadingGetOnlineMovieDataBaseAutoComplete = (
   state: StateStorage
 ) => state.moviesState.isLoadingGetOnlineMovieDataBaseAutoComplete;

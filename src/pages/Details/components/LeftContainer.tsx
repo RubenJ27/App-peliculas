@@ -1,5 +1,5 @@
 import MovieImage from "./MovieImage";
-import type { Title } from "../../../entities/moviesInterface";
+import type { Title } from "../../../models/moviesInterface";
 
 interface Props {
     title?: Title;
