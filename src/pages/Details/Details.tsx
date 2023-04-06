@@ -39,7 +39,6 @@ export const Details = (): JSX.Element => {
         <p>Ha ocurrido un error al obtener la informacion de la pelicula</p>
       );
     }
-    console.log(fullCredits);
     return (
       <>
         <LeftContainer title={overviewDetails?.title ?? {}} />
