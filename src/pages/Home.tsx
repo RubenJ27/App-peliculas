@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 import chairs from '../assets/chairs.png';
-import type { ChangeEvent, KeyboardEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
 export const Home = (): JSX.Element => {
   const navigate = useNavigate();
