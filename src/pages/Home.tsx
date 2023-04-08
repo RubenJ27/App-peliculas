@@ -2,15 +2,23 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 import chairs from '../assets/chairs.png';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, KeyboardEvent } from 'react';
 
 export const Home = (): JSX.Element => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+
   const handleInputChange = ({
     target,
   }: ChangeEvent<HTMLInputElement>): void => {
     setSearch(target.value);
+  };
+
+  const handleKeyDown = (event: { key: string; }): void => {
+    if (event.key === 'Enter') {
+      // 👇 Get input value
+      navigate(`/results/${search.replace(/\s/g, '+')}`);
+    }
   };
 
   const handleCleanClick = (): void => {
@@ -36,6 +44,7 @@ export const Home = (): JSX.Element => {
           <input
             value={search}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             className="bg-special-gray font-lato w-full my-3 h-9 p-1 border focus:outline-none focus:ring-2 focus:ring-gray-500 rounded"
           />
           <div className="flex w-full justify-between">
