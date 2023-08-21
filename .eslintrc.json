@@ -19,6 +19,7 @@
   },
   "plugins": [],
   "rules": {
-    "@typescript-eslint/no-misused-promises": "warn"
+    "@typescript-eslint/no-misused-promises": "warn",
+    "@typescript-eslint/restrict-template-expressions": "off"
   }
 }

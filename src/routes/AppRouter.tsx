@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Details } from '../pages/Details/Details';
-import { Results } from '../pages/Results/Results';
 import { Home } from '../pages/Home';
 import { NotFount } from '../pages/NotFount';
+import { Results } from '../pages/Results/Results';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ export const AppRouter = createBrowserRouter([
     errorElement: <NotFount />,
   },
   {
-    path: '/details/:movieId',
+    path: '/movies/:movieId',
     element: <Details />,
     errorElement: <NotFount />,
   },

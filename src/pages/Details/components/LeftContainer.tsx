@@ -1,10 +1,6 @@
+import type { ResultMovieDetailsData } from '../../../models/moviesInterface';
 import MovieImage from './MovieImage';
-import type { Title } from '../../../models/moviesInterface';
 
-interface Props {
-  title?: Title;
-}
-
-export const LeftContainer = ({ title }: Props): JSX.Element => {
-  return <MovieImage image={title?.image ?? {}} />;
+export const LeftContainer = ({ data }: ResultMovieDetailsData): JSX.Element => {
+  return <MovieImage poster_path={data?.poster_path ?? ''} />;
 };

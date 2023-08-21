@@ -1,23 +1,22 @@
 import { useState } from 'react';
 
-import { useNavigate } from 'react-router';
-import chairs from '../assets/chairs.png';
 import type { ChangeEvent } from 'react';
+import { useNavigate } from 'react-router';
+import { Results } from './Results';
+import { ResultsSearch } from './ResultsSearch';
 
 export const Home = (): JSX.Element => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const [inputSearchValue, setSearch] = useState('');
 
-  const handleInputChange = ({
-    target,
-  }: ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     setSearch(target.value);
   };
 
-  const handleKeyDown = (event: { key: string; }): void => {
+  const handleKeyDown = (event: { key: string }): void => {
     if (event.key === 'Enter') {
       // 👇 Get input value
-      navigate(`/results/${search.replace(/\s/g, '+')}`);
+      navigate(`/results/${inputSearchValue.replace(/\s/g, '+')}`);
     }
   };
 
@@ -26,45 +25,78 @@ export const Home = (): JSX.Element => {
   };
 
   const handleSearchClick = (): void => {
-    navigate(`/results/${search.replace(/\s/g, '+')}`);
+    navigate(`/results/${inputSearchValue.replace(/\s/g, '+')}`);
   };
 
   return (
     <>
-      <div className="flex h-screen overflow-hidden">
-        <div className="w-2/5">
-          <img
-            src={chairs}
-            alt="Movie chairs"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="w-3/5 flex justify-center items-center flex-col px-10">
-          <h2 className="text-4xl font-bold font-lato">Busca tu pelicula...</h2>
-          <input
-            value={search}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            className="bg-special-gray font-lato w-full my-3 h-9 p-1 border focus:outline-none focus:ring-2 focus:ring-gray-500 rounded"
-          />
-          <div className="flex w-full justify-between">
-            <button
-              className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-              style={{ width: '48%' }}
-              onClick={handleSearchClick}
-            >
-              Buscar
-            </button>
-            <button
-              className="bg-special-red hover:bg-red-600 text-white font-lato w-full shadow-lg h-11"
-              style={{ width: '48%' }}
-              onClick={handleCleanClick}
-            >
-              Limpiar
-            </button>
+      <div className="flex w-full h-full bg-[url('/img-movies.jpg')] object-contain bg-cover">
+        <div className="w-full h-full flex justify-top items-center flex-col px-5 pt-2 bg-gradient-to-t from-transparent to-current pb-2">
+          <div className="w-full h-full pt-[4rem]">
+            <h2 className="text-5xl font-bold font-lato text-white mb-2">Busca tu pelicula...</h2>
+            <p className="text-2xl font-weight font-lato text-white">
+              Millones de películas, y personas por descubrir. Explora ahora.
+            </p>
+          </div>
+          <div className="flex w-full mt-[3.2rem] mb-[10rem] justify-center">
+            <form className="w-full">
+              <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path stroke="currentColor" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  value={inputSearchValue}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  id="default-search"
+                  className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Busca una película, programa de television, persona....."
+                  required
+                />
+                <button
+                  type="submit"
+                  onKeyDown={handleKeyDown}
+                  onClick={handleSearchClick}
+                  className=" text-white absolute right-2.5 bottom-2.5 mr-[4.3rem] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Search
+                </button>
+                <button
+                  onClick={handleCleanClick}
+                  className=" text-white absolute right-2.5 bottom-2.5 bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
+
+      {inputSearchValue.length >= 1 ? <ResultsSearch inputSearchValue={inputSearchValue} /> : <Results />}
     </>
   );
 };

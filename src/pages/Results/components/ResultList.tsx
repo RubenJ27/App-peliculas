@@ -1,15 +1,15 @@
+import type { ResultListDiscoverData, Results } from '../../../models/moviesInterface';
 import ResultListItems from './ResultListItems';
-import type { MoviesListData, ResultListData } from '../../../models/moviesInterface';
 
-const ResultList = ({ data, onListItemClick }: ResultListData): JSX.Element => {
+const ResultList = ({ moviesDiscoverCurrentList, onListItemClick }: ResultListDiscoverData): JSX.Element => {
   return (
     <>
-      {data?.map((movie: MoviesListData) => (
+      {moviesDiscoverCurrentList?.map((result: Results) => (
         <ResultListItems
-          key={movie?.id}
-          image={movie?.i}
-          title={movie?.l}
-          id={movie?.id}
+          key={result?.id}
+          poster_path={result?.poster_path}
+          title={result?.title}
+          id={result?.id}
           onListItemClick={onListItemClick}
         />
       ))}

@@ -40,10 +40,10 @@ interface ImageUrlData {
   imageUrl?: string;
   width?: number;
 }
-export interface ResultListData {
+/* export interface ResultListData {
   data?: MoviesListData[];
   onListItemClick: (movieId: string) => void;
-}
+} */
 export interface ResultListItemsData {
   id?: string;
   title?: string;
@@ -146,6 +146,152 @@ export interface FullCredits {
   /* crew?: { [key: string]: Cast[] }; */
 }
 
+/* export interface MoviesState {
+  moviesList?: MoviesListData[];
+  movies?: MoviesListData[];
+  data?: MoviesList[];
+  isLoadingGetOnlineMovieDataBaseAutoComplete: boolean;
+  overviewDetails: ResponseMovies;
+  isLoadingOverviewDetails: boolean;
+  errorOverviewDetails: null;
+  fullCredits: FullCredits;
+  isLoadingFullCredits: boolean;
+  errorFullCredits: null;
+  movieId: string;
+  moviesTrendingDay: ResultListTrendingData;
+  isLoadingMoviesTrendingDay: boolean;
+  errorMoviesTrendingDay: null;
+} */
+
+/* nuevas interfaces */
+
+/* trending movies */
+
+export interface ListTrendingDataResponse {
+  page?: number;
+  results?: Results[];
+  total_pages?: number;
+  total_results?: number;
+}
+
+export interface ResultListTrendingData {
+  data?: ListTrendingDataResponse;
+  onListItemClick?: (movieId: number) => void;
+  loading?: boolean;
+}
+export interface BelongsToCollection {
+  id?: number;
+  name?: string;
+  poster_path?: string;
+  backdrop_path?: null;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface ProductionCompany {
+  id: number;
+  logo_path: null | string;
+  name: string;
+  origin_country: string;
+}
+
+export interface ProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+
+export interface SpokenLanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+
+export interface ListMovieDetailsDataResponse {
+  adult?: boolean;
+  backdrop_path?: string;
+  belongs_to_collection?: BelongsToCollection;
+  budget?: number;
+  genres?: Genre[];
+  homepage?: string;
+  id?: number;
+  imdb_id?: string;
+  original_language?: string;
+  original_title?: string;
+  overview?: string;
+  popularity?: number;
+  poster_path?: string;
+  production_companies?: ProductionCompany[];
+  production_countries?: ProductionCountry[];
+  release_date?: Date;
+  revenue?: number;
+  runtime?: number;
+  spoken_languages?: SpokenLanguage[];
+  status?: string;
+  tagline?: string;
+  title?: string;
+  video?: boolean;
+  vote_average?: number;
+  vote_count?: number;
+}
+
+export interface ResultMovieDetailsData {
+  data?: ListMovieDetailsDataResponse;
+}
+
+/* trending movies */
+
+/* Generic type list movies */
+export interface ListMoviesResponse<T> {
+  page?: number;
+  results?: T[];
+  total_pages?: number;
+  total_results?: number;
+}
+/* Generic type list movies */
+
+/* discover movies */
+
+export interface Results {
+  adult?: boolean;
+  backdrop_path?: null | string;
+  genre_ids?: number[];
+  id: number;
+  original_language?: string;
+  original_title?: string;
+  overview?: string;
+  popularity?: number;
+  poster_path: null | string;
+  release_date?: string;
+  title: string;
+  video?: boolean;
+  vote_average?: number;
+  vote_count?: number;
+  onListItemClick?: (movieId: number) => void;
+}
+
+export interface ResultListDiscoverData {
+  data?: ListMoviesResponse<Results>;
+  moviesDiscoverCurrentList?: Results[];
+  onListItemClick?: (movieId: number) => void;
+  isLoadingMoviesDiscover?: boolean;
+}
+
+/* discover movies */
+
+/* results search movies */
+
+export interface ResultSearchesMoviesData {
+  data?: ListMoviesResponse<Results>;
+  moviesSearchesCurrentList?: Results[];
+  onListItemClick?: (movieId: number) => void;
+  isLoadingMoviesResultsSearches?: boolean;
+}
+
+/* results search movies */
+
 export interface MoviesState {
   moviesList?: MoviesListData[];
   movies?: MoviesListData[];
@@ -158,4 +304,24 @@ export interface MoviesState {
   isLoadingFullCredits: boolean;
   errorFullCredits: null;
   movieId: string;
+  /* Nuevas peticiones de la api */
+  moviesTrendingDay: ResultListTrendingData;
+  isLoadingMoviesTrendingDay: boolean;
+  errorMoviesTrendingDay: null;
+  moviesDiscover: ResultListDiscoverData;
+  moviesDiscoverCurrentList?: Results[];
+  isLoadingMoviesDiscover: boolean;
+  pageNumberCurrent: number;
+  pageNumberIncrement: number;
+  errorMoviesDiscover: null;
+  movieDetails: ResultMovieDetailsData;
+  isLoadingMovieDetails: boolean;
+  errorMovieDetails: null;
+  movieCredits: any;
+  isLoadingMovieCredits: boolean;
+  errorMovieCredits: null;
+  moviesResultsSearches: ResultSearchesMoviesData;
+  moviesSearchesCurrentList?: Results[];
+  isLoadingMoviesResultsSearches: boolean;
+  errorMoviesResultsSearches: null;
 }
