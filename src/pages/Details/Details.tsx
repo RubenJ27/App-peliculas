@@ -36,8 +36,6 @@ export const Details = (): JSX.Element => {
     } else if (errorMovieDetails !== null) {
       return <p>Ha ocurrido un error al obtener la informacion de la pelicula</p>;
     }
-    console.log('movieDetails?.data', movieDetails?.data);
-
     return (
       <>
         <LeftContainer data={movieDetails?.data ?? {}} />

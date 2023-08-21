@@ -46,9 +46,7 @@ export const ResultsSearch = ({ inputSearchValue }: ResultsSearchProps): JSX.Ele
         dispatch(getPageNumber());
         const nextPage = pageNumberIncrement + 1;
         setPage(nextPage);
-        console.log('inputSearchValue', inputSearchValue, 'page', nextPage);
         void dispatch(getResultsSearchesMovies({ titleMovie: inputSearchValue, page: nextPage }));
-        console.log('moviesSearchesCurrentList', moviesSearchesCurrentList);
       }
     }
   };
