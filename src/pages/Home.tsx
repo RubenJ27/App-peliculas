@@ -64,7 +64,7 @@ export const Home = (): JSX.Element => {
                   required
                 />
               </div>
-              <div className="flex w-1/3 mx-3 items-center justify-end">
+              <div className="flex w-[8%] mx-3 items-center justify-end">
                 {/* <button
                   type="submit"
                   onKeyDown={handleKeyDown}
