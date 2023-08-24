@@ -39,10 +39,10 @@ export const Home = (): JSX.Element => {
             </p>
           </div>
           <div className="flex w-full mt-[3.2rem] mb-[10rem] justify-center">
-            <form className="w-full">
+            <form className="flex w-full border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="flex w-full">
+                <div className="flex inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <svg
                     className="w-4 h-4 text-gray-500 dark:text-gray-400"
                     aria-hidden="true"
@@ -59,21 +59,23 @@ export const Home = (): JSX.Element => {
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
                   id="default-search"
-                  className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="custom-input flex flex-wrap w-full p-4 pl-4 sm:text-lg md:text-xl lg:text-2xl xl:text-2xl border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 appearance-none truncate"
                   placeholder="Busca una película, programa de television, persona....."
                   required
                 />
-                <button
+              </div>
+              <div className="flex w-1/3 mx-3 items-center justify-end">
+                {/* <button
                   type="submit"
                   onKeyDown={handleKeyDown}
                   onClick={handleSearchClick}
-                  className=" text-white absolute right-2.5 bottom-2.5 mr-[4.3rem] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="h-2/3 text-sm text-white px-5 py-2 right-2.5 bottom-2.5 mr-[1rem] rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Search
-                </button>
+                </button> */}
                 <button
                   onClick={handleCleanClick}
-                  className=" text-white absolute right-2.5 bottom-2.5 bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-500"
+                  className="h-2/3 text-white right-2.5 bottom-2.5 text-sm px-5 py-2 rounded-lg bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-500"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

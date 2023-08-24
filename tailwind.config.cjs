@@ -1,21 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        lato: ['Lato', ...defaultTheme.fontFamily.sans,]
+        lato: ['Lato', ...defaultTheme.fontFamily.sans],
       },
-      colors:{
-        "special-gray": '#F5F0F0',
-        "special-red": '#EC6666',
+      colors: {
+        'special-gray': '#F5F0F0',
+        'special-red': '#EC6666',
         ...defaultTheme.colors,
+      },
+      gridAutoColumns: {
+        '2fr': 'repeat(auto-fill, minmax(186px, 1fr))',
       },
     },
   },
   plugins: [],
-}
+};

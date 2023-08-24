@@ -83,7 +83,7 @@ export const ResultsSearch = ({ inputSearchValue }: ResultsSearchProps): JSX.Ele
       <div className="flex flex-col w-full h-[100%] px-5 mb-6">
         <h2 className="text-4xl font-bold font-lato text-black text-center mb-2 mt-4">Resultados Peliculas</h2>
         <div className="w-full h-[100%] mb-6">
-          <ul className="grid grid-cols-4 gap-4 w-full h-[100%] text-center justify-items-center">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full h-[100%] text-center justify-items-center">
             <ResultListSearch
               moviesSearchesCurrentList={moviesSearchesCurrentList}
               onListItemClick={handleListItemClick}
