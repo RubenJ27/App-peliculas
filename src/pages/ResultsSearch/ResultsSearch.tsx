@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { getResultsSearchesMovies } from '../../app/store/actions/online-movie-database/online-movie-database.actions';
@@ -7,7 +6,8 @@ import { clearResultsMoviesSearchesScroll, getPageNumber } from '../../app/store
 import type { AppDispatch } from '../../app/store/store';
 import Loading from '../../components/Loading';
 import type { StateStorage } from '../../models/StateStorage';
-import ResultListSearch from './components/ResultListSeach.js';
+import ResultListSearch from './components/ResultListSearch';
+
 interface ResultsSearchProps {
   inputSearchValue: string;
 }

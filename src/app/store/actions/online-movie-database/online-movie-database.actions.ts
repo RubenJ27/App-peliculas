@@ -7,8 +7,8 @@ import type { FullCredits, ResponseMovies, ResultMovieDetailsData } from '../../
   async (params: string) => {
     const getMoviesResponse = await BASE_URL_AUTOCOMPLETE.get(`/?q=${params}`, {
       headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_APP_API_HOST,
+        'X-RapidAPI-Key': process.env.VITE_APP_API_KEY,
+        'X-RapidAPI-Host': process.env.VITE_APP_API_HOST,
       },
     });
 
@@ -21,8 +21,8 @@ export const getOverviewDetails = createAsyncThunk(
   async (params: string) => {
     const { data } = await BASE_URL.get<ResponseMovies>(`/title/get-overview-details?tconst=${params}`, {
       headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_APP_API_HOST,
+        'X-RapidAPI-Key': process.env.VITE_APP_API_KEY,
+        'X-RapidAPI-Host': process.env.VITE_APP_API_HOST,
       },
     });
     return data;
@@ -34,8 +34,8 @@ export const getFullCredits = createAsyncThunk(
   async (params: string) => {
     const { data } = await BASE_URL.get<FullCredits>(`/title/get-full-credits?tconst=${params}`, {
       headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_APP_API_HOST,
+        'X-RapidAPI-Key': process.env.VITE_APP_API_KEY,
+        'X-RapidAPI-Host': process.env.VITE_APP_API_HOST,
       },
     });
     return data;
@@ -49,8 +49,8 @@ export const getTrendingMoviesDay = createAsyncThunk(
   async () => {
     const getTrendingMoviesResponse = await BASE_URL.get(`/trending/movie/day`, {
       headers: {
-        accept: import.meta.env.VITE_APP_API_KEY,
-        Authorization: import.meta.env.VITE_APP_API_HOST,
+        accept: process.env.VITE_APP_API_KEY,
+        Authorization: process.env.VITE_APP_API_HOST,
       },
     });
     // TODO: TypeError cyclic reference, se investigo este concepto para resolver este error y es el siguiente, que es referencias circulares en javascript?
@@ -65,8 +65,8 @@ export const getDiscoverMovies = createAsyncThunk(
   async (payload?: number) => {
     const getDiscoverMoviesResponse = await BASE_URL.get(`/discover/movie?page=${payload}`, {
       headers: {
-        accept: import.meta.env.VITE_APP_API_KEY,
-        Authorization: import.meta.env.VITE_APP_API_HOST,
+        accept: process.env.VITE_APP_API_KEY,
+        Authorization: process.env.VITE_APP_API_HOST,
       },
     });
     // TODO: TypeError cyclic reference, se investigo este concepto para resolver este error y es el siguiente, que es referencias circulares en javascript?
@@ -81,8 +81,8 @@ export const getDetailsMovie = createAsyncThunk(
   async (payload: string): Promise<ResultMovieDetailsData> => {
     const getDetailsMovieResponse = await BASE_URL.get(`/movie/${payload}`, {
       headers: {
-        accept: import.meta.env.VITE_APP_API_KEY,
-        Authorization: import.meta.env.VITE_APP_API_HOST,
+        accept: process.env.VITE_APP_API_KEY,
+        Authorization: process.env.VITE_APP_API_HOST,
       },
     });
 
@@ -97,8 +97,8 @@ export const getCreditsMovie = createAsyncThunk(
   async (payload: string): Promise<any> => {
     const getCreditsMovieResponse = await BASE_URL.get(`/movie/${payload}/credits`, {
       headers: {
-        accept: import.meta.env.VITE_APP_API_KEY,
-        Authorization: import.meta.env.VITE_APP_API_HOST,
+        accept: process.env.VITE_APP_API_KEY,
+        Authorization: process.env.VITE_APP_API_HOST,
       },
     });
 
@@ -110,11 +110,12 @@ export const getCreditsMovie = createAsyncThunk(
 
 export const getResultsSearchesMovies = createAsyncThunk(
   '[The Movie db ] Get The Movie db Credits Movie',
+
   async ({ titleMovie, page }: any) => {
     const getResultsSearchesMoviesResponse = await BASE_URL_SEARCH.get(`/movie?query=${titleMovie}&page=${page}`, {
       headers: {
-        accept: import.meta.env.VITE_APP_API_KEY,
-        Authorization: import.meta.env.VITE_APP_API_HOST,
+        accept: process.env.VITE_APP_API_KEY,
+        Authorization: process.env.VITE_APP_API_HOST,
       },
     });
 

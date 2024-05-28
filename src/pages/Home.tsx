@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
 import type { ChangeEvent } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Results } from './Results';
 import { ResultsSearch } from './ResultsSearch';
-
 export const Home = (): JSX.Element => {
   const navigate = useNavigate();
   const [inputSearchValue, setSearch] = useState('');

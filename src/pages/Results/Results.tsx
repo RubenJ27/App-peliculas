@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { getDiscoverMovies } from '../../app/store/actions/online-movie-database/online-movie-database.actions';
@@ -11,7 +10,7 @@ import {
 import type { AppDispatch } from '../../app/store/store';
 import Loading from '../../components/Loading';
 import type { StateStorage } from '../../models/StateStorage';
-import ResultList from './components/ResultList.js';
+import ResultList from './components/ResultList';
 
 export const Results = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
