@@ -1,4 +1,4 @@
-import type { ResultSearchesMoviesData, Results } from '../../../models/moviesInterface';
+import type { ResultSearchesMoviesData, Results } from '../../../models/interfaces/MovieInterface';
 import ResultListSearchItems from './ResultListSearchItems';
 
 const ResultListSearch = ({ moviesSearchesCurrentList, onListItemClick }: ResultSearchesMoviesData): JSX.Element => {

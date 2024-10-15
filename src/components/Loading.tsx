@@ -1,4 +1,4 @@
-import type { PropsMessageLoading } from '../models/moviesInterface';
+import type { PropsMessageLoading } from '../models/interfaces/MovieInterface';
 
 const Loading = ({ messageLoading }: PropsMessageLoading): JSX.Element => {
   return (

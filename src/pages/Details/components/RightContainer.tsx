@@ -4,7 +4,7 @@ import type {
   PlotSummary,
   RatingInterface,
   Title,
-} from '../../../models/moviesInterface';
+} from '../../../models/interfaces/MovieInterface';
 import Genre from './Genre';
 interface Props {
   id?: string;

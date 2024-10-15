@@ -1,4 +1,4 @@
-import type { Cast } from '../../../models/moviesInterface';
+import type { Cast } from '../../../models/interfaces/MovieInterface';
 
 interface Props {
   cast?: Cast[];
@@ -10,9 +10,7 @@ const Casts = ({ cast }: Props): JSX.Element => {
       <span className="font-bold mr-1">Cast:</span>
       {cast?.map(({ name }, index) => (
         <span key={index} className="mr-1">
-          {`${name ?? 'No hay un cast disponible'}${
-            index !== cast.length - 1 ? ',' : ''
-          }`}
+          {`${name ?? 'No hay un cast disponible'}${index !== cast.length - 1 ? ',' : ''}`}
         </span>
       ))}
     </div>

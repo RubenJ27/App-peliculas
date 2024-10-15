@@ -1,6 +1,6 @@
 import ratingStart from '../../../assets/yellow-star.png';
 
-import type { RatingInterface } from '../../../models/moviesInterface';
+import type { RatingInterface } from '../../../models/interfaces/MovieInterface';
 
 const RatingContainer = ({ rating }: RatingInterface): JSX.Element => {
   return (

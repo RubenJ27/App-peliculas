@@ -1,4 +1,4 @@
-import type { ResultListDiscoverData, Results } from '../../../models/moviesInterface';
+import type { ResultListDiscoverData, Results } from '../../../models/interfaces/MovieInterface';
 import ResultListItems from './ResultListItems';
 
 const ResultList = ({ moviesDiscoverCurrentList, onListItemClick }: ResultListDiscoverData): JSX.Element => {

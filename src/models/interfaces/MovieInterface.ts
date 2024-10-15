@@ -41,9 +41,9 @@ interface ImageUrlData {
   width?: number;
 }
 /* export interface ResultListData {
-  data?: MoviesListData[];
-  onListItemClick: (movieId: string) => void;
-} */
+    data?: MoviesListData[];
+    onListItemClick: (movieId: string) => void;
+  } */
 export interface ResultListItemsData {
   id?: string;
   title?: string;
@@ -147,21 +147,21 @@ export interface FullCredits {
 }
 
 /* export interface MoviesState {
-  moviesList?: MoviesListData[];
-  movies?: MoviesListData[];
-  data?: MoviesList[];
-  isLoadingGetOnlineMovieDataBaseAutoComplete: boolean;
-  overviewDetails: ResponseMovies;
-  isLoadingOverviewDetails: boolean;
-  errorOverviewDetails: null;
-  fullCredits: FullCredits;
-  isLoadingFullCredits: boolean;
-  errorFullCredits: null;
-  movieId: string;
-  moviesTrendingDay: ResultListTrendingData;
-  isLoadingMoviesTrendingDay: boolean;
-  errorMoviesTrendingDay: null;
-} */
+    moviesList?: MoviesListData[];
+    movies?: MoviesListData[];
+    data?: MoviesList[];
+    isLoadingGetOnlineMovieDataBaseAutoComplete: boolean;
+    overviewDetails: ResponseMovies;
+    isLoadingOverviewDetails: boolean;
+    errorOverviewDetails: null;
+    fullCredits: FullCredits;
+    isLoadingFullCredits: boolean;
+    errorFullCredits: null;
+    movieId: string;
+    moviesTrendingDay: ResultListTrendingData;
+    isLoadingMoviesTrendingDay: boolean;
+    errorMoviesTrendingDay: null;
+  } */
 
 /* nuevas interfaces */
 
@@ -291,37 +291,3 @@ export interface ResultSearchesMoviesData {
 }
 
 /* results search movies */
-
-export interface MoviesState {
-  moviesList?: MoviesListData[];
-  movies?: MoviesListData[];
-  data?: MoviesList[];
-  isLoadingGetOnlineMovieDataBaseAutoComplete: boolean;
-  overviewDetails: ResponseMovies;
-  isLoadingOverviewDetails: boolean;
-  errorOverviewDetails: null;
-  fullCredits: FullCredits;
-  isLoadingFullCredits: boolean;
-  errorFullCredits: null;
-  movieId: string;
-  /* Nuevas peticiones de la api */
-  moviesTrendingDay: ResultListTrendingData;
-  isLoadingMoviesTrendingDay: boolean;
-  errorMoviesTrendingDay: null;
-  moviesDiscover: ResultListDiscoverData;
-  moviesDiscoverCurrentList?: Results[];
-  isLoadingMoviesDiscover: boolean;
-  pageNumberCurrent: number;
-  pageNumberIncrement: number;
-  errorMoviesDiscover: null;
-  movieDetails: ResultMovieDetailsData;
-  isLoadingMovieDetails: boolean;
-  errorMovieDetails: null;
-  movieCredits: any;
-  isLoadingMovieCredits: boolean;
-  errorMovieCredits: null;
-  moviesResultsSearches: ResultSearchesMoviesData;
-  moviesSearchesCurrentList?: Results[];
-  isLoadingMoviesResultsSearches: boolean;
-  errorMoviesResultsSearches: null;
-}

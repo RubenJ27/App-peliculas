@@ -1,4 +1,4 @@
-export interface IError {
+export interface ErrorInterface {
   data: string;
   error: {
     message: string;

@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { getDiscoverMovies } from '../../app/store/actions/online-movie-database/online-movie-database.actions';
+import Loading from '../../components/Loading';
+
+import { StateStorage } from '../../models/states/StateStorage';
+import { getDiscoverMovies } from '../../store/actions/online-movie-database/online-movie-database.actions';
 import {
   clearResultsDiscoverMoviesScroll,
   clearResultsMoviesSearchesScroll,
   getPageNumber,
-} from '../../app/store/slices/moviesSlice';
-import type { AppDispatch } from '../../app/store/store';
-import Loading from '../../components/Loading';
-import type { StateStorage } from '../../models/StateStorage';
+} from '../../store/slices/moviesSlice';
+import type { AppDispatch } from '../../store/store';
 import ResultList from './components/ResultList';
 
 export const Results = (): JSX.Element => {

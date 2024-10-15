@@ -1,8 +1,8 @@
 import { Provider } from 'react-redux';
 
 import ReactDOM from 'react-dom/client';
-import { store } from './app/store/store';
 import { AppRouter } from './routes/AppRouter.jsx';
+import { store } from './store/store';
 /* import { Counter } from "./features/counter/Counter"; */
 import { RouterProvider } from 'react-router-dom';
 import './App.css';

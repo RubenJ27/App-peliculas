@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { getDetailsMovie } from '../../app/store/actions/online-movie-database/online-movie-database.actions';
-import type { AppDispatch } from '../../app/store/store';
 import Loading from '../../components/Loading';
-import type { StateStorage } from '../../models/StateStorage';
+
+import { StateStorage } from '../../models/states/StateStorage';
+import { getDetailsMovie } from '../../store/actions/online-movie-database/online-movie-database.actions';
+import type { AppDispatch } from '../../store/store';
 import { LeftContainer } from '../Details/components/LeftContainer';
 import RightContainer from '../Details/components/RightContainer';
 

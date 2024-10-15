@@ -1,5 +1,5 @@
 import { imageUrlMovie } from '../../../helpers/imageUrl';
-import type { ListMovieDetailsDataResponse } from '../../../models/moviesInterface';
+import type { ListMovieDetailsDataResponse } from '../../../models/interfaces/MovieInterface';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const MovieImage = ({ poster_path }: ListMovieDetailsDataResponse): JSX.Element => {

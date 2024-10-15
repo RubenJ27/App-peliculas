@@ -1,4 +1,4 @@
-import type { ListMovieDetailsDataResponse } from '../../../models/moviesInterface';
+import type { ListMovieDetailsDataResponse } from '../../../models/interfaces/MovieInterface';
 
 const Genre = ({ genres }: ListMovieDetailsDataResponse): JSX.Element => {
   console.log(genres);

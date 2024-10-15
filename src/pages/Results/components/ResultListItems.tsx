@@ -1,5 +1,5 @@
 import { imageUrlMoviesList } from '../../../helpers/imageUrl';
-import type { Results } from '../../../models/moviesInterface';
+import type { Results } from '../../../models/interfaces/MovieInterface';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ResultListItems = ({ id, title, poster_path, onListItemClick }: Results): JSX.Element => {

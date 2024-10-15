@@ -1,20 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL, BASE_URL_SEARCH } from '../../../../api/ApiMovies';
-import type { FullCredits, ResponseMovies, ResultMovieDetailsData } from '../../../../models/moviesInterface';
-
-/* export const getOnlineMovieDataBaseAutoComplete = createAsyncThunk(
-  '[Online Movie Data Base] Get Online Movie Data Base',
-  async (params: string) => {
-    const getMoviesResponse = await BASE_URL_AUTOCOMPLETE.get(`/?q=${params}`, {
-      headers: {
-        'X-RapidAPI-Key': process.env.VITE_APP_API_KEY,
-        'X-RapidAPI-Host': process.env.VITE_APP_API_HOST,
-      },
-    });
-
-    return getMoviesResponse.data.d;
-  }
-); */
+import { BASE_URL, BASE_URL_SEARCH } from '../../../api/ApiMovies';
+import type { FullCredits, ResponseMovies, ResultMovieDetailsData } from '../../../models/interfaces/MovieInterface';
 
 export const getOverviewDetails = createAsyncThunk(
   '[Online Movie Data Base] Get Online Overview Details Movie Data Base',
