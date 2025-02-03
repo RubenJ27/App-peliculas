@@ -1,6 +1,6 @@
 ## Descripción
 
-<-- Agrega una descripción del user story !-->
+<-- Example del user story !-->
 
 ## Resumen de los cambios
 
