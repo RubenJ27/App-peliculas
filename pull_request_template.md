@@ -1,6 +1,6 @@
 ## Descripción
 
-<-- Example del user story test desc !-->
+<-- Example del user story test desc author !-->
 
 ## Resumen de los cambios
 
