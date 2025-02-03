@@ -18,4 +18,4 @@
 <-- Agrega notas adicionales !-->
 <-- Agrega notas test !-->
 
-## Screensshots
+Co-authored-by: NAME <NAME@EXAMPLE.COM>
