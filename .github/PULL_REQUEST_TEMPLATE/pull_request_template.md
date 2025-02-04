@@ -1,6 +1,6 @@
 ## Descripción
 
-<-- Example para prueba !-->
+<-- Example para prueba test !-->
 
 ## Resumen de los cambios
 
