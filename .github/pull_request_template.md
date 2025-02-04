@@ -1,6 +1,6 @@
 ## Descripción
 
-<-- Example para prueba feature !-->
+<-- Example para prueba test !-->
 
 ## Resumen de los cambios
 
