@@ -1,21 +1,30 @@
-## Descripción
+# Description
 
-<-- Example para prueba test !-->
+Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
-## Resumen de los cambios
+## Type of change
 
-- Settings for tag list and add tags:
-  - Restricted being able to add a tag when the tag list is empty within the modal
+Please delete options that are not relevant.
 
-## Checklist
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [x] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] This change requires a documentation update
 
-- [ ] Bug fix (non-breaking change que arregla un bug)
-- [x] Nueva funcionalidad (non-breaking change que añade funcionalidad)
-- [ ] Breaking change (fix o feature que causaría un cambio en una funcionalidad ya existente)
-- [ ] Este cambio requiere actualizar la documentación
+## ¿Have you done unit tests?
 
-## Notas
+- [ ] Sí
+- [x] No
 
-<-- Agrega notas test example !-->
+# Checklist summary of changes:
+
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published in downstream modules
 
 Co-authored-by: NAME <NAME@EXAMPLE.COM>
