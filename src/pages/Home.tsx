@@ -31,7 +31,7 @@ export const Home = (): JSX.Element => {
       <div className="flex w-full h-full bg-[url('/img-movies.jpg')] object-contain bg-cover">
         <div className="w-full h-full flex justify-top items-center flex-col px-5 pt-2 bg-gradient-to-t from-transparent to-current pb-2">
           <div className="w-full h-full pt-[4rem]">
-            <h2 className="text-5xl font-bold font-lato text-white mb-2">Busca tu pelicula test 80% coverage...</h2>
+            <h2 className="text-5xl font-bold font-lato text-white mb-2">Busca tu película...</h2>
             <p className="text-2xl font-weight font-lato text-white">
               Millones de películas, y personas por descubrir. Explora ahora.
             </p>
@@ -58,7 +58,7 @@ export const Home = (): JSX.Element => {
                   onKeyDown={handleKeyDown}
                   id="default-search"
                   className="custom-input flex flex-wrap w-full p-4 pl-4 sm:text-lg md:text-xl lg:text-2xl xl:text-2xl border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 appearance-none truncate"
-                  placeholder="Busca una película, programa de television, persona....."
+                  placeholder="Busca una película, programa de televisión, persona....."
                   required
                 />
               </div>
