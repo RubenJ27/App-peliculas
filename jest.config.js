@@ -14,5 +14,13 @@ const config = {
   collectCoverage: true, // Habilita la recolección de cobertura
   coverageDirectory: 'coverage', // Directorio donde se guardará el informe de cobertura
   coverageReporters: ['json', 'lcov', 'text', 'clover'], // Tipos de informes de cobertura a generar
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
 };
 module.exports = config;
