@@ -31,7 +31,7 @@ export const Home = (): JSX.Element => {
       <div className="flex w-full h-full bg-[url('/img-movies.jpg')] object-contain bg-cover">
         <div className="w-full h-full flex justify-top items-center flex-col px-5 pt-2 bg-gradient-to-t from-transparent to-current pb-2">
           <div className="w-full h-full pt-[4rem]">
-            <h2 className="text-5xl font-bold font-lato text-white mb-2">Busca tu pelicula...</h2>
+            <h2 className="text-5xl font-bold font-lato text-white mb-2">Busca tu pelicula test 80% coverage...</h2>
             <p className="text-2xl font-weight font-lato text-white">
               Millones de películas, y personas por descubrir. Explora ahora.
             </p>
