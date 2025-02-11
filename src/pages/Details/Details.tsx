@@ -35,7 +35,7 @@ export const Details = (): JSX.Element => {
     if (isLoadingMovieDetails) {
       return <Loading messageLoading="Obteniendo informacion de la pelicula..." />;
     } else if (errorMovieDetails !== null) {
-      return <p>Ha ocurrido un error al obtener la informacion de la pelicula</p>;
+      return <p>Ha ocurrido test 80% coverage un error al obtener la informacion de la pelicula</p>;
     }
     return (
       <>
