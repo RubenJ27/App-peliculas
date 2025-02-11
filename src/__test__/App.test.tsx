@@ -19,7 +19,7 @@ test('renderiza el componente Home', async () => {
   await waitFor(() => {
     const searchInput = getByPlaceholderText(
       document.body,
-      'Busca una película, programa de television, persona.....'
+      'Busca una película, programa de televisión, persona...'
     ) as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'test' } });
 
