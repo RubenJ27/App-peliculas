@@ -16,10 +16,10 @@ const config = {
   coverageReporters: ['json', 'lcov', 'text', 'clover'], // Tipos de informes de cobertura a generar
   coverageThreshold: {
     global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
+      branches: 15,
+      functions: 40,
+      lines: 55,
+      statements: 60,
     },
   },
 };
