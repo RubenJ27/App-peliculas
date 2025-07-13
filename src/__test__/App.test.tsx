@@ -4,7 +4,8 @@ import '@testing-library/jest-dom/jest-globals';
 import { fireEvent, getByPlaceholderText, render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { Home } from '../pages/Home';
+
+import { Home } from '../features/movies/Home';
 import { store } from '../store/store';
 
 test('renderiza el componente Home', async () => {
