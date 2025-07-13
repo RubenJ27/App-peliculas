@@ -1,6 +1,6 @@
 require('dotenv').config({
   path: '.env',
 });
-jest.mock('./src/helpers/getEnvironments', () => ({
+jest.mock('./src/core/helpers/getEnvironments.ts', () => ({
   getEnvironments: () => ({ ...process.env }),
 }));
