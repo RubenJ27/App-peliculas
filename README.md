@@ -73,12 +73,22 @@ npm test
 
 ```
 src/
-├── api/          # Configuración de axios y endpoints
-├── components/   # Componentes reutilizables
-├── pages/        # Componentes de página
-├── store/        # Configuración de Redux y slices
-├── models/       # Interfaces y tipos
-└── __tests__/    # Tests
+├── api/         # Configuración de axios y endpoints (TMDb)
+├── core/        # Componentes y helpers reutilizables globales
+├── features/     # Features principales (ej: movies, users)
+│   └── movies/
+│       ├── components/   # Subcomponentes específicos del feature
+│       ├── slices/       # Redux slices del feature
+│       ├── services/     # Thunks y lógica de negocio del feature
+│       ├── types/        # Tipos e interfaces del feature
+│       ├── Home.tsx      # Páginas principales del feature
+│       ├── Details.tsx
+│       ├── Results.tsx
+│       ├── ResultsSearch.tsx
+│       ├── NotFount.tsx
+│       └── index.ts      # Barrel export del feature
+├── store/       # Configuración global de Redux
+└── __test__/    # Tests
 ```
 
 ## 🌟 Versiones

@@ -1,9 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Details } from '../pages/Details/Details';
-import { Home } from '../pages/Home';
-import { NotFount } from '../pages/NotFount';
-import { Results } from '../pages/Results/Results';
+import { Details, Home, NotFount, Results } from '../features/movies';
 
 export const AppRouter = createBrowserRouter([
   {
