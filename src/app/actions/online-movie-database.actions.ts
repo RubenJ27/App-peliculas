@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL, BASE_URL_SEARCH } from '../../../api/ApiMovies';
-import type { FullCredits, ResponseMovies, ResultMovieDetailsData } from '../../../models/interfaces/MovieInterface';
+import { BASE_URL, BASE_URL_SEARCH } from '../../api/ApiMovies';
+import { FullCredits, ResponseMovies, ResultMovieDetailsData } from '../../features/movies/types';
 
 /* export const getOnlineMovieDataBaseAutoComplete = createAsyncThunk(
   '[Online Movie Data Base] Get Online Movie Data Base',
